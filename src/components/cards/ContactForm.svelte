@@ -3,20 +3,67 @@
   import Input from '../forms/Input.svelte'
   import Textarea from '../forms/Textarea.svelte'
 
-  const onSubmit = async (data) => {
-    const response = await fetch('/.netlify/functions/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
+  import confetti from 'canvas-confetti'
 
-    if (response.ok) {
-      const json = await response.json()
-      console.log(json)
-    } else {
-      alert('Error sending message')
+  let formState = 'idle';
+
+  function fire(particleRatio, opts) {
+    confetti(Object.assign({}, { origin: { y: 0.7 } }, opts, {
+      particleCount: Math.floor(200 * particleRatio)
+    }));
+  }
+
+  const onSubmit = async (data) => {
+    formState = 'loading';
+
+    try {
+      const response = await fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({...data})
+      })
+
+      if (response.ok) {
+        await new Promise((resolve) => {
+          setTimeout(() => {
+            formState = 'success';
+            fire(0.25, {
+              spread: 26,
+              startVelocity: 55,
+            });
+            fire(0.2, {
+              spread: 60,
+            });
+            fire(0.35, {
+              spread: 100,
+              decay: 0.91,
+              scalar: 0.8
+            });
+            fire(0.1, {
+              spread: 120,
+              startVelocity: 25,
+              decay: 0.92,
+              scalar: 1.2
+            });
+            fire(0.1, {
+              spread: 120,
+              startVelocity: 45,
+            });
+            resolve();
+          }, 2000)
+        })
+      } else {
+        formState = 'error';
+      }
+    } catch (error) {
+      formState = 'error';
+    } finally {
+      await new Promise((resolve) => setTimeout(() => {
+        formState = 'idle';
+        resolve();
+      }, 2000))
     }
   }
 </script>
@@ -35,7 +82,20 @@
       </svg>
     </Input>
     <Textarea required name="message" label="Message" rows="5" placeholder="Your awesome message ^o^" />
-    <button type="submit" class="btn-dark">Send me an email</button>
+    <button type="submit" class={`btn btn-dark ${formState}`}>
+      {#if formState === 'loading'}
+        Sending email...
+      {:else if formState === 'success'}
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Email sent successfully
+      {:else if formState === 'error'}
+        Error while sending email
+      {:else}
+        Send me an email
+      {/if}
+    </button>
   </Form>
 </section>
 
@@ -57,10 +117,24 @@
 	    margin-inline: calc(-0.7 * var(--body-padding));
     }
 
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+
+      position: relative;
+    }
+
     p {
       max-width: 35ch;
       margin-top: clamp(1.6rem, 1.1602rem + 1.0624vw, 3.2rem);
       margin-bottom: clamp(8rem, 6.9004rem + 2.6560vw, 12rem);;
+    }
+
+    .loading {
+      opacity: 0.8;
+      cursor: progress;
     }
   }
 </style>
