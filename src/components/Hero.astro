@@ -1,0 +1,51 @@
+<section>
+  <h1>
+    Helping small businesses and startups <strong>upgrade</strong> their web presence
+  </h1>
+  <p>
+    I'm Abner! <strong>A freelancer from Brazil, helping you</strong> take your ideas out of the planning phase with snazzy websites.
+  </p>
+  <footer>
+    <button class="btn-primary">Send me an email</button>
+    <button class="btn-secondary">Check out my work</button>
+  </footer>
+</section>
+
+<style lang="scss">
+  section {
+    --header-padding-end: clamp(13.2rem, 6.5199rem + 16.1355vw, 37.5rem);
+
+    max-width: 95.3rem;    
+    margin: 0 auto;
+
+    padding-block-end: var(--header-padding-end);
+
+    h1 {
+      margin-block-end:clamp(2.4rem, 1.8502rem + 1.3280vw, 4.4rem);
+
+      strong {
+        text-decoration: underline;
+      }
+    }
+
+    p {
+      max-width: 71.9rem;
+      margin-block-end: clamp(3.6rem, 2.8303rem + 1.8592vw, 6.4rem);
+    }
+    
+    strong {
+      color: var(--color-primary);
+    }
+  
+    footer {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+
+      @media (min-width: 616px) {
+        flex-direction: row;
+      }
+    }
+
+  }
+</style>

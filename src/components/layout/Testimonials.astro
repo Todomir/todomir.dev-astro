@@ -1,0 +1,57 @@
+---
+import Testimonial from '../cards/Testimonial.astro'
+---
+
+<section>
+  <Testimonial
+    variant="left"
+    client="Antônio Almeida"
+    project={{
+      name: "Kobraza & Portal Baía",
+      url: "https://example.com"
+    }}
+    avatar={{
+      url: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1176&q=80",
+      alt: "Antônio Almeida"
+    }}
+    testimonial="Just straight up one of the most professional web developer I’ve worked with."
+  />
+  <Testimonial 
+    client="Rafael Santos"
+    project={{
+      name: "Rifar.io",
+      url: "https://example.com"
+    }}
+    avatar={{
+      url: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1176&q=80",
+      alt: "Rafael Santos"
+    }}
+    testimonial="Just helped me out when it seemed like everything was going wrong. Would work with again and again"
+  />
+</section>
+
+<style lang="scss">
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+    
+    --section-margin-bottom: clamp(6.4rem, 3.7000rem + 7.5000vw, 10rem)
+    margin-bottom: var(--section-margin-bottom);
+    padding-block: 128px;
+
+    width: calc(100% + (var(--body-padding) * 2));
+    margin-left: calc(var(--body-padding) * -1);
+
+    padding-inline: clamp(2.1rem, 0.1986rem + 9.5070vw, 7.5rem);
+
+    @media screen and (min-width: 768px) {
+      padding-inline: clamp(7.5rem, -22.6333rem + 39.2361vw, 52.7rem);
+    }
+
+    @media screen and (min-width: 1024px) {
+      flex-direction: row;
+    }
+  }
+</style>

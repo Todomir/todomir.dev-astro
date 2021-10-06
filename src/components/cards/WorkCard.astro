@@ -1,0 +1,120 @@
+---
+export interface IProps {
+  id: string
+  title: string
+  variant: 'alpha' | 'beta' | 'kappa'
+  image: {
+    src: string
+    alt: string
+  }
+}
+
+const { id, title, variant, image } = Astro.props
+---
+
+<article>
+  <img
+    class={`img ${variant}`}
+    alt={image.alt} 
+    src={image.src} 
+  />
+  <header class={`header ${variant}`}>
+    <h2>{title}</h2>
+    <a href="/" class={`btn ${variant}`}>Learn more</a>
+  </header>
+</article>
+
+<style lang="scss">
+  article {
+    position: relative;
+
+    .img {
+      --size: clamp(29rem, 27.5581rem + 7.2093vw, 41.4rem);
+
+      width: 100%;
+      height: var(--size);
+
+      object-fit: cover;
+      object-position: center;
+
+      &.alpha {
+        border-radius: 2rem 2rem 10rem 1rem;
+      }
+
+      &.beta {
+        border-radius: 14.5rem 2rem 14.5rem 2rem;
+      }
+
+      &.kappa {
+        border-radius: 14.5rem 14.5rem 2rem 2rem;
+      }
+    }
+
+    .header {
+      position: absolute;
+      z-index: 1;
+
+      --work-heading-fluid-size: clamp(1.6rem, 1.507rem + 0.4651vw, 2.4rem);
+	    --work-button-fluid-size: clamp(1.4rem, 1.4233rem + -0.1163vw, 1.2rem);
+      
+      h2 {
+        --font-weight: 800;
+        --font-contrast: 800;
+
+        font-size: 2rem;
+        margin-bottom: clamp(0.4rem, 0.1000rem + 0.8333vw, 0.8rem);
+        
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        width: max-content;
+
+        padding: 1.2rem;
+        border-radius: 0.5rem;
+      }
+
+      .btn {
+        --font-weight: 800;
+        --font-contrast: 400;
+
+        padding: 8px 12px;
+        border-radius: 0.5rem;
+
+        font-size: 1.6rem;
+        background-color: var(--color-secondary);
+        color: var(--color-white);
+
+        text-decoration: none;
+      }
+
+      &.alpha {
+        margin-top: -1.2em;
+        margin-left: 1.2em
+      }
+
+      &.beta {
+        top: 0;
+        right: 0;
+
+        margin-top: 2.4em;
+        margin-right: -2.4em;
+
+        .btn {
+          position: relative;
+          left: -5rem;
+        }
+      }
+
+      &.kappa {
+        top: 50%;
+        left: 0;
+
+        margin-left: -2.4em;
+
+        .btn {
+          position: relative;
+          left: 5rem;
+        }
+      }
+    }
+  }
+</style>

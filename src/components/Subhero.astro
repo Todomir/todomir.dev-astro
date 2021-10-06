@@ -1,0 +1,75 @@
+
+<style lang="scss">
+  section {
+    color: var(--color-white);
+    position: relative;
+
+    --subheading-padding: clamp(12rem, 4.3028rem + 18.5923vw, 40rem);
+
+    padding-block: var(--subheading-padding);
+
+    &:before {
+      content: '';
+
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+
+      width: calc(100% + (var(--body-padding) * 2));
+      margin-left: calc(-1 * var(--body-padding));
+
+      background: var(--color-primary);
+
+      clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+    } 
+
+    article {
+      max-width: 84.3rem;
+	    margin: 0 auto;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h1 {
+        margin-block-end: clamp(2.4rem, 1.8502rem + 1.3280vw, 4.4rem);
+
+        strong {
+          text-decoration: underline;
+        }
+      }
+
+      p {
+        margin-block-end: clamp(3.6rem, 2.8303rem + 1.8592vw, 6.4rem);
+      }
+    
+      footer {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+
+        button {
+          --background-color: var(--color-primary);
+        }
+
+        @media (min-width: 390px) {
+          flex-direction: row;
+        }
+      }
+    }
+  }
+</style>
+
+<section>
+  <article>
+    <h1>
+      Getting on the internet <strong>should not</strong> be hard
+    </h1>
+    <p>
+      Creating a <strong>modern, beautiful, robust</strong> website can be pretty hard. Sometimes you just need to focus on your business and can’t really deal with the headache of building your own website. <strong>Let me make that easier for you.</strong> 
+    </p>
+    <footer>
+      <button class="btn-dark">Send me an email</button>
+    </footer>
+  </article>
+</section>

@@ -1,0 +1,86 @@
+---
+import WorkCard from './cards/WorkCard.astro'
+
+const work = [
+  {
+    id: 1,
+    title: 'Kobraza Imóveis',
+    variant: 'alpha',
+    image: {
+      src: 'https://i.imgur.com/qQqQqQq.png',
+      alt: 'Kobraza Imóveis',
+    }
+  },
+  {
+    id: 2,
+    title: 'Rifar.io',
+    variant: 'beta',
+    image: {
+      src: 'https://i.imgur.com/qQqQqQq.png',
+      alt: 'Rifar.io',
+    }
+  },
+  {
+    id: 3,
+    title: 'Portal Baía',
+    variant: 'kappa',
+    image: {
+      src: 'https://i.imgur.com/qQqQqQq.png',
+      alt: 'Portal Baía',
+    }
+  }
+]
+---
+
+<section>
+  <h1>My work</h1>
+  <div>
+    {work.map((item) => ((
+      <WorkCard 
+        id={String(item.id)} 
+        title={item.title} 
+        variant={item.variant} 
+        image={item.image}
+      />
+    )))}
+  </div>
+</section>
+
+<style lang="scss">
+  section {
+    --section-margin-bottom: clamp(6.4rem, 3.7000rem + 7.5000vw, 10rem)
+    margin-bottom: var(--section-margin-bottom);
+
+    width: calc(100% + (var(--body-padding) * 2));
+    margin-left: calc(var(--body-padding) * -1);
+
+    padding-inline: clamp(2.1rem, 0.1986rem + 9.5070vw, 7.5rem);
+
+    @media screen and (min-width: 768px) {
+      padding-inline: clamp(7.5rem, -22.6333rem + 39.2361vw, 52.7rem);
+    }
+    
+
+    h1 {
+      --heading-margin-bottom: clamp(4.8rem, -0.9000rem + 15.8333vw, 12.4rem);
+      text-decoration: underline;
+      text-align: center;
+
+      margin-bottom: var(--heading-margin-bottom);
+    }
+
+    div {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6.4rem;
+
+      max-width: 88.6rem;
+      margin-inline: auto;
+
+      @media screen and (min-width: 768px) {
+        gap: 7.2rem 2.4rem;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+</style>

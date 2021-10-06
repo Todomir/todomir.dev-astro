@@ -1,0 +1,109 @@
+---
+export interface IProps {
+  client: string
+  project: {
+    url: string
+    name: string
+  }
+  avatar: {
+    url: string
+    alt: string
+  }
+  role: string
+  testimonial: string
+  variant?: 'left' | 'right'
+}
+
+const {client, project, avatar, role, testimonial, variant = 'right'} = Astro.props
+---
+
+<blockquote class={variant} cite={project.url} >
+  <header>
+    <img src={avatar.url} alt={avatar.alt} />
+    <div>
+      <h1>{client}</h1>
+      <span>{project.name}</span>
+    </div>
+  </header>
+  <p>{testimonial}</p>
+</blockquote>
+
+<style lang="scss">
+  blockquote {
+    position: relative;
+
+    background-color: var(--color-primary);
+    color: var(--color-white);
+
+    max-width: fit-content;
+
+    padding-block: 24px;
+    padding-inline: 36px 52px;
+
+    border-radius: 20px;
+
+    header {
+      --margin-bottom: clamp(2.4rem, 2.6199rem + -0.5312vw, 1.6rem);
+      margin-bottom: var(--margin-bottom);
+
+      h1 {
+        --heading-size: clamp(2.4rem, 2.1801rem + 0.5312vw, 3.2rem);
+        --font-weight: 800;
+        --font-contrast: 800;
+        font-size: var(--heading-size);
+      }
+
+      span {
+        --font-size: clamp(1rem, 0.9450rem + 0.1328vw, 1.2rem);
+        font-size: 16px;
+      }
+
+      img {
+        position: absolute;
+        width: 92px;
+        height: 92px;
+        
+        border-radius: 50%;
+
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    p {
+      --font-weight: 500;
+      --font-contrast: 200;
+      --font-size: clamp(1.6rem, 1.7100rem + -0.2656vw, 1.2rem);
+      font-size: var(--font-size);
+
+      max-width: 30ch;
+    }
+
+    &.left {
+      header {
+        margin-inline-start: 52px;
+
+        img {
+          top: 0;
+          left: 0;
+
+          margin-left: -24px;
+          margin-top: -32px;
+        }
+      }
+    }
+
+    &.right {
+      background-color: var(--color-primary-light);
+
+      img {
+        top: 50%;
+        right: 0;
+
+        transform: translateY(-50%);
+
+        margin-right: -32px;
+      }
+    }
+  }
+</style>

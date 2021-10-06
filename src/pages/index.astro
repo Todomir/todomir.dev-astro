@@ -1,0 +1,48 @@
+---
+  import BaseHead from '../components/layout/BaseHead.astro'
+  import Header from '../components/Header.svelte'
+  import Hero from '../components/Hero.astro'
+  import Work from '../components/Work.astro'
+  import Subhero from '../components/Subhero.astro'
+  import Testimonials from '../components/layout/Testimonials.astro'
+  import ContactForm from '../components/cards/ContactForm.svelte'
+  import Footer from '../components/Footer.astro'
+---
+<style lang="scss">
+  main {
+    position: relative;
+
+    header {
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 2.8rem 4rem;
+
+        border-radius: 1rem;
+
+        img {
+          width: 7.5rem;
+        }
+      }
+    }
+  }
+</style>
+
+<html lang="en">
+  <head>
+    <BaseHead canonicalURL="https://todomir.dev" />
+  </head>
+  <body>
+    <Header client:load />
+    <main>
+      <Hero />
+      <Work />
+      <Testimonials />
+      <Subhero />
+      <ContactForm client:load />
+    </main>
+    <Footer />
+  </body>
+</html>

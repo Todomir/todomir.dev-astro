@@ -1,0 +1,155 @@
+@font-face {
+	font-family: 'Kyiv Type Sans';
+	src: url('../assets/fonts/kyiv-type.woff2') format('woff2');
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+
+	line-height: 1.45;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: auto;
+
+	font-variation-settings: 'wght' var(--font-weight), 'CONT' var(--font-contrast), 'MIDL' var(--font-midline);
+	font-weight: normal;
+}
+
+*:focus {
+	--background-color: var(--color-white);
+	--outline-color: var(--color-secondary);
+
+	outline: none;
+	box-shadow: 0 0 0 2px var(--background-color), 0 0 0 5px var(--outline-color);
+}
+
+:root {
+	/* Font configuration */
+	--font-family: 'Kyiv Type Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+
+	font-family: var(--font-family);
+
+	--font-weight: 400;
+	--font-contrast: 1000;
+	--font-midline: 0;
+
+	/* Color configuration */
+	--color-primary: hsl(243, 73%, 59%);
+	--color-primary-dark: hsl(243, 78%, 50%);
+	--color-primary-light: hsl(243, 65%, 65%);
+	--color-primary-transparent: hsla(243, 73%, 59%, 0.4);
+
+	--color-secondary: hsl(240, 64%, 71%);
+	--color-secondary-dark: hsl(240, 70%, 62%);
+	--color-secondary-light: hsl(240, 60%, 82%);
+	--color-secondary-transparent: hsla(240, 64%, 71%, 0.3);
+
+	--color-light: hsl(0, 0%, 86%);
+	--color-dark: hsl(210, 50%, 25%);
+	--color-darker: hsl(210, 67%, 14%);
+	--color-darkest: hsl(210, 72%, 9%);
+
+	--color-bg: #eeeeee;
+	--color-white: #ffffff;
+
+	/* Fluid configuration */
+	--body-padding: clamp(8rem, -4.6179rem + 30.4781vw, 53.9rem);
+	--heading-fluid-size: clamp(3.2rem, 2.3203rem + 2.1248vw, 6.4rem);
+	--body-fluid-size: clamp(1.6rem, 1.3801rem + 0.5312vw, 2.4rem);
+	--button-fluid-size: clamp(1.6rem, 1.545rem + 0.1328vw, 1.8rem);
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	width: 100%;
+	min-height: 100vh;
+
+	padding-inline: var(--body-padding);
+
+	background: var(--color-bg);
+	color: var(--color-darker);
+
+	--font-weight: 600;
+	--font-contrast: 400;
+	letter-spacing: -0.04em;
+	line-height: 160%;
+}
+
+main {
+	padding-block: clamp(13.2rem, 10.6709rem + 6.1089vw, 22.4rem);
+}
+
+p {
+	font-size: var(--body-fluid-size);
+	line-height: 170%;
+}
+
+button,
+.btn {
+	--font-weight: 800;
+	--font-contrast: 700;
+
+	font-family: var(--font-family);
+	font-size: var(--button-fluid-size);
+
+	padding-inline: 1.6em;
+	padding-block: 0.8em;
+
+	border-radius: 0.5em;
+	border: none;
+
+	cursor: pointer;
+
+	will-change: background-color, transform;
+	transition: all 0.35s ease-in-out;
+}
+
+button:hover,
+.btn:hover {
+	--font-weight: 1000;
+	transition: all 0.6s ease-in-out;
+}
+
+button:active,
+.btn:active {
+	transition: all 0.12s ease-in-out;
+}
+
+h1 {
+	--font-contrast: 750;
+	--font-weight: 700;
+	font-size: var(--heading-fluid-size);
+	line-height: normal;
+
+	letter-spacing: -0.06em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	text-rendering: optimizeLegibility;
+}
+
+strong {
+	--font-contrast: 750;
+	--font-weight: 1000;
+	--font-midline: 500;
+	font-size: inherit;
+	letter-spacing: -0.01em;
+}
+
+.break-container {
+	width: calc(100% + (var(--body-padding) * 2));
+	margin-inline: calc(-1 * var(--body-padding));
+}

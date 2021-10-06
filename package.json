@@ -1,0 +1,19 @@
+{
+  "name": "todomir.dev",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "netlify:dev": "netlify dev"
+  },
+  "devDependencies": {
+    "@astrojs/renderer-svelte": "^0.1.2",
+    "astro": "^0.20.7"
+  },
+  "dependencies": {
+    "nodemailer": "^6.6.5"
+  }
+}
