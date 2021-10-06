@@ -1,7 +1,7 @@
-import nodemailer from 'nodemailer'
+const nodemailer = require('nodemailer')
 const { TRANSPORTER_EMAIL, TRANSPORTER_PASSWORD } = process.env
 
-exports.handler = async function sendEmail(evt, ctx) {
+exports.handler = async function sendEmail(evt, ctx, callback) {
   if (evt.httpMethod !== 'POST') {
     return { statusCode: 405 }
   }
@@ -9,7 +9,7 @@ exports.handler = async function sendEmail(evt, ctx) {
   const body = JSON.parse(evt.body);
 
   const transporter = nodemailer.createTransport({
-		service: 'SendinBlue',
+    service: 'SendinBlue',
 		auth: {
 			user: TRANSPORTER_EMAIL,
 			pass: TRANSPORTER_PASSWORD,
@@ -18,20 +18,15 @@ exports.handler = async function sendEmail(evt, ctx) {
 
   const mailOptions = {
     from: body.email,
-    to: "contato@todomir.dev",
-    subject: body.message
+    to: TRANSPORTER_EMAIL,
+    subject: body.subject,
+    text: body.message,
   }
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify(error)
-			}
-    }
-    return {
-      statusCode: 200,
-      body: JSON.stringify(info.response)
-		}
-  })
+  try {
+    const info = await transporter.sendMail(mailOptions)
+    callback(null, { statusCode: 200, body: JSON.stringify(info) })
+  } catch (error) {
+    callback(error)
+  }
 }
