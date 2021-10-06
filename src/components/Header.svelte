@@ -27,7 +27,7 @@
         />
       </svg>
       {#if isPassThreshold}
-        <a class="btn btn-secondary" in:scale={{ delay: 150, duration: 350 }} out:scale={{duration: 350}} href="/">Get in touch</a>
+        <a class="btn btn-secondary" in:scale={{ delay: 150, duration: 350 }} out:scale={{duration: 350}} href="#contact">Get in touch</a>
       {/if}
     </nav>
   </header>

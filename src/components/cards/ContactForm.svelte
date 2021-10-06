@@ -67,7 +67,7 @@
     }
   }
 </script>
-<section>
+<section id="contact">
   <h1>Let’s keep talking...</h1>
   <p>Have any questions, what so say hi or just want to start a new project? Drop a message below!</p>
   <Form onSubmit={onSubmit}>
