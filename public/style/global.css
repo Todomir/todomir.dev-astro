@@ -53,6 +53,9 @@
 	--color-darker: hsl(210, 67%, 14%);
 	--color-darkest: hsl(210, 72%, 9%);
 
+	--color-error: hsl(4, 90%, 58%);
+	--color-success: hsl(120, 39%, 54%);
+
 	--color-bg: #eeeeee;
 	--color-white: #ffffff;
 
@@ -120,6 +123,31 @@ button:hover,
 button:active,
 .btn:active {
 	transition: all 0.12s ease-in-out;
+}
+
+.btn.error {
+	background-color: var(--color-error);
+	color: var(--color-white);
+	cursor: not-allowed;
+}
+
+.btn.success {
+	background-color: var(--color-success);
+	color: var(--color-darkest);
+	cursor: not-allowed;
+}
+
+button:disabled,
+.btn:disabled,
+button:disabled:focus,
+.btn:disabled:focus,
+button:disabled:active,
+.btn:disabled:active,
+button:disabled:hover,
+.btn:disabled:hover {
+	background-color: var(--color-light);
+	color: hsl(0, 0%, 70%);
+	cursor: not-allowed;
 }
 
 h1 {
