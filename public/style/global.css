@@ -66,6 +66,11 @@
 	--button-fluid-size: clamp(1.6rem, 1.545rem + 0.1328vw, 1.8rem);
 }
 
+html,
+body {
+	scroll-behavior: smooth;
+}
+
 html {
 	font-size: 62.5%;
 }
@@ -112,6 +117,8 @@ button,
 
 	will-change: background-color, transform;
 	transition: all 0.35s ease-in-out;
+
+	text-decoration: none;
 }
 
 button:hover,
