@@ -71,6 +71,7 @@
   <h1>Let’s keep talking...</h1>
   <p>Have any questions, what so say hi or just want to start a new project? Drop a message below!</p>
   <Form onSubmit={onSubmit}>
+    <Input required type="text" name="name" label="Name" placeholder="John Doe" />
     <Input required type="email" name="email" label="Email" placeholder="john@doe.com">
       <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
