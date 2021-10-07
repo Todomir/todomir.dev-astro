@@ -54,7 +54,9 @@
 	--color-darkest: hsl(210, 72%, 9%);
 
 	--color-error: hsl(4, 90%, 58%);
+	--color-error-dark: hsl(4, 65%, 50%);
 	--color-success: hsl(120, 39%, 54%);
+	--color-success-dark: hsl(120, 33%, 46%);
 
 	--color-bg: #eeeeee;
 	--color-white: #ffffff;
@@ -138,9 +140,25 @@ button:active,
 	cursor: not-allowed;
 }
 
+.btn.error:focus,
+.btn.error:hover,
+.btn.error:active {
+	background-color: var(--color-error-dark);
+	color: var(--color-white);
+	cursor: not-allowed;
+}
+
 .btn.success {
 	background-color: var(--color-success);
 	color: var(--color-darkest);
+	cursor: not-allowed;
+}
+
+.btn.success:focus,
+.btn.success:hover,
+.btn.success:active {
+	background-color: var(--color-success-dark);
+	color: var(--color-white);
 	cursor: not-allowed;
 }
 
