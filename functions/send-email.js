@@ -9,7 +9,9 @@ exports.handler = async function sendEmail(evt, ctx, callback) {
   const body = JSON.parse(evt.body);
 
   const transporter = nodemailer.createTransport({
-    service: 'SendinBlue',
+    host: 'smtp.umbler.com',
+    port: '587',
+    from: TRANSPORTER_EMAIL,
 		auth: {
 			user: TRANSPORTER_EMAIL,
 			pass: TRANSPORTER_PASSWORD,
@@ -17,11 +19,22 @@ exports.handler = async function sendEmail(evt, ctx, callback) {
 	})
 
   const mailOptions = {
-    from: body.email,
+		from: TRANSPORTER_EMAIL,
     to: TRANSPORTER_EMAIL,
-    subject: body.subject,
-    text: body.message,
-  }
+    replyTo: body.email,
+		subject: body.subject,
+		text: body.message,
+		html: `
+    <h1>You have a new contact request</h1>
+    <h2>Contact Details</h2>
+    <ul>  
+      <li>Name: ${body.name}</li>
+      <li>Email: ${body.email}</li>
+    </ul>
+    <h3>Message</h3>
+    <p>${body.message}</p>
+    `,
+	}
 
   try {
     const info = await transporter.sendMail(mailOptions)
