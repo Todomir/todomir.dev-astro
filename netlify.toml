@@ -6,10 +6,10 @@
 [[redirects]]
   from = "/*"
   to = "/br/:splat"
+  status = 302
   conditions = {language = ["pt", "pt-BR"]}
-  force = true
 
 [[redirects]]
   from = "/*"
   to = "/en/:splat"
-  force = true
+  status = 302
