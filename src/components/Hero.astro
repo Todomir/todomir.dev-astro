@@ -1,13 +1,17 @@
+---
+  import prismicDom from 'prismic-dom'
+  const { content } = Astro.props
+
+  const header = prismicDom.RichText.asHtml(content.title)
+  const paragraph = prismicDom.RichText.asHtml(content.paragraph)
+---
+
 <section>
-  <h1>
-    Helping small businesses and startups <strong>upgrade</strong> their web presence
-  </h1>
-  <p>
-    I'm Abner! <strong>A freelancer from Brazil, helping you</strong> take your ideas out of the planning phase with snazzy websites.
-  </p>
+  {header}
+  {paragraph}
   <footer>
-    <a class="btn btn-primary" href="#contact">Send me an email</a>
-    <a class="btn btn-secondary" href="/work">Check out my work</a>
+    <a class="btn btn-primary" href="#contact">{content.primary_cta}</a>
+    <a class="btn btn-secondary" href="/work">{content.secondary_cta}</a>
   </footer>
 </section>
 
@@ -31,10 +35,10 @@
     p {
       max-width: 71.9rem;
       margin-block-end: clamp(3.6rem, 2.8303rem + 1.8592vw, 6.4rem);
-    }
-    
-    strong {
-      color: var(--color-primary);
+
+      strong {
+        color: var(--color-primary);
+      }
     }
   
     footer {

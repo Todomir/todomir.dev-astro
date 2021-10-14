@@ -9,9 +9,10 @@ export interface IProps {
   permalink?: string;
   canonicalURL?: string;
   lang?: string;
+  headerCta?: string;
 }
 
-const { title, description, permalink, canonicalURL, lang } = Astro.props;
+const { title, description, permalink, canonicalURL, lang, headerCta } = Astro.props;
 ---
 <html lang={lang}>
   <head>
@@ -23,7 +24,7 @@ const { title, description, permalink, canonicalURL, lang } = Astro.props;
     />
   </head>
   <body>
-    <Header client:load />
+    <Header cta={headerCta} client:load />
       <main>
           <slot/>
       </main>

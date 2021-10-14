@@ -1,6 +1,7 @@
 ---
   // Start of import block -------
   import langs from '../../data/lang.js'
+  import { getPageByUID, getAllFormattedLanguages } from '../../lib/prismic.js'
   
   import BaseLayout from '../../components/layout/BaseLayout.astro'
   import Testimonials from '../../components/layout/Testimonials.astro'
@@ -14,9 +15,11 @@
   // End of import block -------
 
   const { lang } = Astro.request.params
+  const { data: page } = await getPageByUID('homepage', 'home', lang)
 
-  export function getStaticPaths() {
-    return langs.map(lang => ({
+  export async function getStaticPaths() {
+    const languages = await getAllFormattedLanguages()
+    return languages.map(lang => ({
       params: { lang },
     }))
   }
@@ -44,13 +47,21 @@
 </style>
 
 <BaseLayout 
-  title="Abner Rodrigues | todomir.dev" 
-  description="A freelancer based in Brazil, helping you take your ideas out of the planning phase with snazzy websites."
+  title={page.page_title}
+  description={page.page_description}
+  headerCta={page.primary_cta_label}
   permalink="https://todomir.dev"
   canonicalURL="https://todomir.dev"
   lang={lang}
 >
-  <Hero />
+  <Hero 
+    content={{ 
+      title: page.hero_title,
+      paragraph: page.hero_paragraph,
+      primary_cta: page.primary_cta_label,
+      secondary_cta: page.secondary_cta_label
+    }}
+  />
   <Work />
   <Testimonials />
   <Subhero />
