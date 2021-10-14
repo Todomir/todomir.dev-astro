@@ -2,3 +2,14 @@
   command = "npm run build"
   functions = "functions"
   publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/br/*"
+  status = 200
+  conditions = {Language = ["pt-BR"], country = ["BR"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/en/*"
+  status = 200
