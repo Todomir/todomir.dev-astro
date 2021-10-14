@@ -1,4 +1,4 @@
 export default [
   "en",
-  "br"
+  "pt-BR"
 ]
