@@ -5,11 +5,11 @@
 
 [[redirects]]
   from = "/*"
-  to = "/br/*"
+  to = "/br/:splat"
   conditions = {language = ["pt", "pt-BR"]}
   force = true
 
 [[redirects]]
   from = "/*"
-  to = "/en/*"
+  to = "/en/:splat"
   force = true
