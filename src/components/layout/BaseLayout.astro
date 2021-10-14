@@ -10,9 +10,9 @@ export interface IProps {
   canonicalURL?: string;
 }
 
-const { title, description, permalink, canonicalURL } = Astro.props;
+const { title, description, permalink, canonicalURL, lang } = Astro.props;
 ---
-<html lang="en">
+<html lang={lang}>
   <head>
     <BaseHead 
       title={title} 

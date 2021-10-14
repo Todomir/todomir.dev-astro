@@ -13,6 +13,8 @@
 
   // End of import block -------
 
+  const { lang } = Astro.request.params
+
   export function getStaticPaths() {
     return langs.map(lang => ({
       params: { lang },
@@ -46,6 +48,7 @@
   description="A freelancer based in Brazil, helping you take your ideas out of the planning phase with snazzy websites."
   permalink="https://todomir.dev"
   canonicalURL="https://todomir.dev"
+  lang={lang}
 >
   <Hero />
   <Work />
