@@ -1,12 +1,20 @@
 ---
+  import langs from '../../data/lang.js'
+  
   import BaseLayout from '../components/layout/BaseLayout.astro'
   import Testimonials from '../components/layout/Testimonials.astro'
-
+  
   import ContactForm from '../components/cards/ContactForm.svelte'
 
   import Hero from '../components/Hero.astro'
   import Subhero from '../components/Subhero.astro'
   import Work from '../components/Work.astro'
+
+  export function getStaticPaths() {
+    return langs.map((lang: string) => ({
+      params: { lang },
+    }))
+  }
 ---
 <style lang="scss">
   main {
