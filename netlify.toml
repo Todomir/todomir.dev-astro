@@ -6,12 +6,10 @@
 [[redirects]]
   from = "/*"
   to = "/br/*"
-  conditions = {language = ["pt"]}
-  status = 200
+  conditions = {language = ["pt", "pt-BR"]}
   force = true
 
 [[redirects]]
   from = "/*"
   to = "/en/*"
-  status = 200
   force = true
