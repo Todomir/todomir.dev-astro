@@ -79,8 +79,8 @@ export async function getPageByType(slug, lang) {
   return response;
 }
 
-export async function getPageByUID(type, slug, lang) {
-  const response = await client.getByUID(type, slug, { lang });
+export async function getPageByUID(type, slug, options) {
+  const response = await client.getByUID(type, slug, options)
   return response;
 }
 

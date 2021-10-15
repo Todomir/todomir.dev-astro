@@ -10,12 +10,24 @@
 
   import Hero from '../../components/layout/Hero.astro'
   import Subhero from '../../components/layout/Subhero.astro'
+  import Slicezone from '../../components/layout/Slicezone.astro'
   import Work from '../../components/layout/Work.astro'
 
   // End of import block -------
 
   const { lang } = Astro.request.params
-  const { data: page } = await getPageByUID('homepage', 'home', lang)
+  const { data: page } = await getPageByUID('homepage', 'home', {
+    lang,
+    fetchLinks: [
+      'testimonial.client', 
+      'testimonial.avatar', 
+      'testimonial.role', 
+      'testimonial.project_name', 
+      'testimonial.project_link', 
+      'testimonial.variant',
+      'testimonial.testimonial'
+    ]
+  })
 
   export async function getStaticPaths() {
     const languages = await getAllFormattedLanguages()
@@ -62,6 +74,7 @@
       secondary_cta: page.secondary_cta_label
     }}
   />
+  <Slicezone slices={page.body} />
   <Work />
   <Testimonials />
   <Subhero />
