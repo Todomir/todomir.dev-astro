@@ -8,13 +8,17 @@
   const header = prismicDom.RichText.asHtml(
     content.title, 
     null, 
-    (type, element, content, children) => serializer(type, element, content, children, styles.title)
+    (type, element, content, children) => serializer(type, element, content, children, {
+      h1: styles.title
+    })
   )
   const paragraph = prismicDom.RichText.asHtml(
     content.paragraph, 
     null, 
     (type, element, content, children) => 
-      serializer(type, element, content, children, styles.paragraph)
+      serializer(type, element, content, children, {
+        p: styles.paragraph
+      })
   )
 ---
 
