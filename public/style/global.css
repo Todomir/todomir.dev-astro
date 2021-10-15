@@ -186,6 +186,12 @@ h1 {
 	line-height: normal;
 
 	letter-spacing: -0.06em;
+	margin-block-end: clamp(2.4rem, 1.8502rem + 1.328vw, 4.4rem);
+}
+
+.hero-paragraph strong,
+.hero-title strong {
+	color: var(--color-primary);
 }
 
 h1,

@@ -1,9 +1,10 @@
 ---
   import prismicDom from 'prismic-dom'
+  import { serializer } from '../lib/prismic.js'
   const { content } = Astro.props
 
-  const header = prismicDom.RichText.asHtml(content.title)
-  const paragraph = prismicDom.RichText.asHtml(content.paragraph)
+  const header = prismicDom.RichText.asHtml(content.title, null, serializer)
+  const paragraph = prismicDom.RichText.asHtml(content.paragraph, null, serializer)
 ---
 
 <section>
@@ -24,15 +25,7 @@
 
     padding-block-end: var(--header-padding-end);
 
-    h1 {
-      margin-block-end:clamp(2.4rem, 1.8502rem + 1.3280vw, 4.4rem);
-
-      strong {
-        text-decoration: underline;
-      }
-    }
-
-    p {
+    :global(.hero-paragraph) {
       max-width: 71.9rem;
       margin-block-end: clamp(3.6rem, 2.8303rem + 1.8592vw, 6.4rem);
 
