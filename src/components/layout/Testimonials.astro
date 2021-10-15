@@ -1,33 +1,26 @@
 ---
 import Testimonial from '../cards/Testimonial.astro'
+
+const { slice } = Astro.props
+console.log(slice)
 ---
 
 <section>
-  <Testimonial
-    variant="left"
-    client="Antônio Almeida"
-    project={{
-      name: "Kobraza & Portal Baía",
-      url: "https://example.com"
-    }}
-    avatar={{
-      url: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1176&q=80",
-      alt: "Antônio Almeida"
-    }}
-    testimonial="Just straight up one of the most professional web developer I’ve worked with."
-  />
-  <Testimonial 
-    client="Rafael Santos"
-    project={{
-      name: "Rifar.io",
-      url: "https://example.com"
-    }}
-    avatar={{
-      url: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1176&q=80",
-      alt: "Rafael Santos"
-    }}
-    testimonial="Just helped me out when it seemed like everything was going wrong. Would work with again and again"
-  />
+  {slice?.map(({ testimonial: { data } }) => (
+    <Testimonial
+      variant={data.variant}
+      client={data.client}
+      project={{
+        name: data.project_name,
+        url: `/projects/${data.project_link?.id}`
+      }}
+      avatar={{
+        url: data.avatar.url,
+        alt: data.avatar.alt
+      }}
+      testimonial={data.testimonial}
+    />
+  ))}
 </section>
 
 <style lang="scss">
