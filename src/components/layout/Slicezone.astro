@@ -1,0 +1,13 @@
+---
+import Testimonials from './Testimonials.astro'
+
+const { slices } = Astro.props
+---
+
+{slices.map(slice => {
+  switch(slice.slice_type) {
+    case 'testimonials':
+      return <Testimonials slice={slice.items} />
+    default:
+      return null
+}})}
