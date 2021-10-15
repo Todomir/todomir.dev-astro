@@ -22,7 +22,7 @@ const {client, project, avatar, role, testimonial, variant = 'right'} = Astro.pr
     <img src={avatar.url} alt={avatar.alt} />
     <div>
       <h1>{client}</h1>
-      <span>{project.name}</span>
+      <span>{project.name} &bull; {role}</span>
     </div>
   </header>
   <p>{testimonial}</p>

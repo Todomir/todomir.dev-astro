@@ -9,6 +9,7 @@ const { slice } = Astro.props
     <Testimonial
       variant={data.variant}
       client={data.client}
+      role={data.role}
       project={{
         name: data.project_name,
         url: `/projects/${data.project_link?.id}`
