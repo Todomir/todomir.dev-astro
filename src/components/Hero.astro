@@ -3,8 +3,19 @@
   import { serializer } from '../lib/prismic.js'
   const { content } = Astro.props
 
-  const header = prismicDom.RichText.asHtml(content.title, null, serializer)
-  const paragraph = prismicDom.RichText.asHtml(content.paragraph, null, serializer)
+  import styles from './styles/Hero.module.scss'
+
+  const header = prismicDom.RichText.asHtml(
+    content.title, 
+    null, 
+    (type, element, content, children) => serializer(type, element, content, children, styles.title)
+  )
+  const paragraph = prismicDom.RichText.asHtml(
+    content.paragraph, 
+    null, 
+    (type, element, content, children) => 
+      serializer(type, element, content, children, styles.paragraph)
+  )
 ---
 
 <section>
@@ -24,15 +35,6 @@
     margin: 0 auto;
 
     padding-block-end: var(--header-padding-end);
-
-    :global(.hero-paragraph) {
-      max-width: 71.9rem;
-      margin-block-end: clamp(3.6rem, 2.8303rem + 1.8592vw, 6.4rem);
-
-      strong {
-        color: var(--color-primary);
-      }
-    }
   
     footer {
       display: flex;

@@ -7,12 +7,12 @@ const { PRISMIC_API_URL } = process.env;
 
 const client = Prismic.client(PRISMIC_API_URL);
 
-export function serializer(type, element, content, children) {
+export function serializer(type, element, content, children, elClass) {
   switch (type) {
 		case Elements.paragraph:
-			return '<p class="hero-paragraph">' + children.join('') + '</p>'
+			return `<p class=${elClass}>` + children.join('') + '</p>'
 		case Elements.heading1:
-      return '<h1 class="hero-title">' + children.join('') + '</h1>'
+      return `<h1 class=${elClass}>` + children.join('') + '</h1>'
     default:
       null
 	}
