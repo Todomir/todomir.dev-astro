@@ -1,9 +1,9 @@
 ---
   import prismicDom from 'prismic-dom'
-  import { serializer } from '../lib/prismic.js'
+  import { serializer } from '../../lib/prismic.js'
   const { content } = Astro.props
 
-  import styles from './styles/Hero.module.scss'
+  import styles from '../styles/Hero.module.scss'
 
   const header = prismicDom.RichText.asHtml(
     content.title, 
