@@ -48,3 +48,11 @@ const { title, description, permalink, ogImageUrl, canonicalURL } = Astro.props;
 <meta property="twitter:title" content={title || site.title} />
 <meta property="twitter:description" content={description || site.description} />
 <meta property="twitter:image" content={ogImageUrl ? `${site.url}${ogImageUrl}` : `${site.url}/assets/img/social.png`} />
+
+<style>
+  @font-face {
+    font-family: 'Kyiv Type Sans';
+    src: url('/assets/fonts/kyiv-type.woff2') format('woff2');
+    font-display: fallback;
+  }
+</style>
