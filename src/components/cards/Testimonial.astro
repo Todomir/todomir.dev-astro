@@ -36,6 +36,7 @@ const {client, project, avatar, role, testimonial, variant = 'right'} = Astro.pr
     color: var(--color-white);
 
     max-width: fit-content;
+    height: fit-content;
 
     padding-block: 24px;
     padding-inline: 36px 52px;
@@ -78,6 +79,12 @@ const {client, project, avatar, role, testimonial, variant = 'right'} = Astro.pr
       font-size: var(--font-size);
 
       max-width: 30ch;
+    }
+
+    @media screen and (min-width: 500px) {
+      &:nth-of-type(even) {
+        justify-self: end;
+      }
     }
 
     @media screen and (min-width: 1024px) {
