@@ -80,6 +80,10 @@ const {client, project, avatar, role, testimonial, variant = 'right'} = Astro.pr
       max-width: 30ch;
     }
 
+    &:nth-of-type(odd) {
+      transform: translateY(20%);
+    }
+
     &.left {
       header {
         margin-inline-start: 52px;
