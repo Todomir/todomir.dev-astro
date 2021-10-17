@@ -12,6 +12,7 @@
   "devDependencies": {
     "@astrojs/renderer-svelte": "^0.1.2",
     "@types/canvas-confetti": "^1.4.2",
+    "@types/prismic-dom": "^2.1.1",
     "astro": "^0.20.7"
   },
   "dependencies": {
