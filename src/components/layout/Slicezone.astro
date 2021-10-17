@@ -1,13 +1,25 @@
 ---
 import Testimonials from './Testimonials.astro'
+import Work from './Work.astro'
+
+import Debug from 'astro/debug'
 
 const { slices } = Astro.props
+
 ---
 
 {slices.map(slice => {
   switch(slice.slice_type) {
     case 'testimonials':
       return <Testimonials slice={slice.items} />
+    case 'work_section':
+      return <Work slice={slice.items} />
     default:
       return null
 }})}
+
+<style>
+  .debug {
+    font-size: 1.5rem;
+  }
+</style>

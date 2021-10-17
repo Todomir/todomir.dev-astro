@@ -1,48 +1,27 @@
 ---
+import prismicDom from 'prismic-dom'
 import WorkCard from '../cards/WorkCard.astro'
 
-const work = [
-  {
-    id: 1,
-    title: 'Kobraza Imóveis',
-    variant: 'alpha',
-    image: {
-      src: 'https://i.imgur.com/qQqQqQq.png',
-      alt: 'Kobraza Imóveis',
-    }
-  },
-  {
-    id: 2,
-    title: 'Rifar.io',
-    variant: 'beta',
-    image: {
-      src: 'https://i.imgur.com/qQqQqQq.png',
-      alt: 'Rifar.io',
-    }
-  },
-  {
-    id: 3,
-    title: 'Portal Baía',
-    variant: 'kappa',
-    image: {
-      src: 'https://i.imgur.com/qQqQqQq.png',
-      alt: 'Portal Baía',
-    }
-  }
-]
+const { slice } = Astro.props
 ---
 
 <section>
   <h1>My work</h1>
   <div>
-    {work.map((item) => ((
+    {slice.map(({ projects: { data }, id }) => (
       <WorkCard 
-        id={String(item.id)} 
-        title={item.title} 
-        variant={item.variant} 
-        image={item.image}
+        id={id} 
+        title={prismicDom.RichText.asText(data.name)} 
+        variant={data.type}
+        cta={{
+          label: prismicDom.RichText.asText(data.cta_label),
+        }}
+        image={{
+          src: data.image?.url,
+          alt: data.image?.alt,
+        }}
       />
-    )))}
+    ))}
   </div>
 </section>
 

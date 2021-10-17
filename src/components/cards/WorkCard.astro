@@ -9,7 +9,7 @@ export interface IProps {
   }
 }
 
-const { id, title, variant, image } = Astro.props
+const { id, title, variant, image, cta } = Astro.props
 ---
 
 <article>
@@ -20,7 +20,7 @@ const { id, title, variant, image } = Astro.props
   />
   <header class={`header ${variant}`}>
     <h2>{title}</h2>
-    <a href="/" class={`btn ${variant}`}>Learn more</a>
+    <a href="/" class={`btn ${variant}`}>{cta.label}</a>
   </header>
 </article>
 
