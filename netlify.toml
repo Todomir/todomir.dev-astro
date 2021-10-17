@@ -7,7 +7,7 @@
   from = "/*"
   to = "/pt-BR/:splat"
   status = 302
-  conditions = {Language = "pt"}
+  conditions = {Country = ["br", "pt", "mz", "ao", "gw", "tl", "gq", "mo", "cv", "st"]}
 
 [[redirects]]
   from = "/*"
