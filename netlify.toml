@@ -4,12 +4,12 @@
   publish = "dist"
 
 [[redirects]]
-  from = "/*"
+  from = "/*.html"
   to = "/pt-BR/:splat"
   status = 302
   conditions = {Country = ["br", "pt", "mz", "ao", "gw", "tl", "gq", "mo", "cv", "st"]}
 
 [[redirects]]
-  from = "/*"
+  from = "/*.html"
   to = "/en-US/:splat"
   status = 302
