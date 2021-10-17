@@ -8,7 +8,7 @@ const { slice } = Astro.props
 <section>
   <h1>My work</h1>
   <div>
-    {slice.map(({ projects: { data }, id }) => (
+    {slice?.map(({ projects: { data }, id }) => (
       <WorkCard 
         id={id} 
         title={prismicDom.RichText.asText(data.name)} 

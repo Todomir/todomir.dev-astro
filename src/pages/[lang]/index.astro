@@ -1,17 +1,13 @@
 ---
   // Start of import block -------
-  import langs from '../../data/lang.js'
   import { getPageByUID, getAllFormattedLanguages } from '../../lib/prismic.js'
   
   import BaseLayout from '../../components/layout/BaseLayout.astro'
-  import Testimonials from '../../components/layout/Testimonials.astro'
   
   import ContactForm from '../../components/cards/ContactForm.svelte'
 
   import Hero from '../../components/layout/Hero.astro'
-  import Subhero from '../../components/layout/Subhero.astro'
   import Slicezone from '../../components/layout/Slicezone.astro'
-  import Work from '../../components/layout/Work.astro'
 
   // End of import block -------
 
@@ -25,7 +21,12 @@
       'testimonial.project_name', 
       'testimonial.project_link', 
       'testimonial.variant',
-      'testimonial.testimonial'
+      'testimonial.testimonial',
+      'project.name',
+      'project.cta_label',
+      'project.cta_link',
+      'project.type',
+      'project.image'
     ]
   })
 
@@ -75,8 +76,5 @@
     }}
   />
   <Slicezone slices={page.body} />
-  <Work />
-  <Testimonials />
-  <Subhero />
   <ContactForm client:visible />
 </BaseLayout>

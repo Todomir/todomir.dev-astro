@@ -80,8 +80,10 @@ const {client, project, avatar, role, testimonial, variant = 'right'} = Astro.pr
       max-width: 30ch;
     }
 
-    &:nth-of-type(odd) {
-      transform: translateY(20%);
+    @media screen and (min-width: 1024px) {
+      &:nth-of-type(odd) {
+        transform: translateY(20%);
+      }
     }
 
     &.left {
