@@ -1,12 +1,12 @@
-const nodemailer = require('nodemailer')
+import nodemailer from 'nodemailer'
 const { TRANSPORTER_EMAIL, TRANSPORTER_PASSWORD } = process.env
 
-exports.handler = async function sendEmail(evt, ctx, callback) {
-  if (evt.httpMethod !== 'POST') {
-    return { statusCode: 405 }
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    res.status(405).send('Method Not Allowed')
   }
 
-  const body = JSON.parse(evt.body);
+  const body = JSON.parse(req.body);
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.umbler.com',
@@ -38,8 +38,8 @@ exports.handler = async function sendEmail(evt, ctx, callback) {
 
   try {
     const info = await transporter.sendMail(mailOptions)
-    callback(null, { statusCode: 200, body: JSON.stringify(info) })
+    res.status(200).json(info)
   } catch (error) {
-    callback(error)
+    res.status(500).json(error)
   }
 }
