@@ -1,15 +1,16 @@
 ---
+import Subhero from './Subhero.astro'
 import Testimonials from './Testimonials.astro'
 import Work from './Work.astro'
 
-import Debug from 'astro/debug'
-
 const { slices } = Astro.props
-
+console.log(slices)
 ---
 
 {slices.map(slice => {
   switch(slice.slice_type) {
+    case 'call_to_action':
+      return <Subhero slice={slice.primary} />
     case 'testimonials':
       return <Testimonials slice={slice.items} />
     case 'work_section':

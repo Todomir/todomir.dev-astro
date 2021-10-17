@@ -1,3 +1,17 @@
+---
+import prismicDom from 'prismic-dom'
+const { slice } = Astro.props
+---
+
+<section>
+  <article>
+    {prismicDom.RichText.asHtml(slice.title)}
+    {prismicDom.RichText.asHtml(slice.paragraph)}
+    <footer>
+      <a href="#contact" class="btn btn-dark">{slice.button_label}</a>
+    </footer>
+  </article>
+</section>
 
 <style lang="scss">
   section {
@@ -33,17 +47,11 @@
 
       h1 {
         margin-block-end: clamp(2.4rem, 1.8502rem + 1.3280vw, 4.4rem);
-
-        strong {
-          text-decoration: underline;
-        }
-      }
-
-      p {
-        margin-block-end: clamp(3.6rem, 2.8303rem + 1.8592vw, 6.4rem);
       }
     
       footer {
+        margin-block-start: clamp(3.6rem, 2.8303rem + 1.8592vw, 6.4rem);
+
         display: flex;
         flex-direction: column;
         gap: 0.5em;
@@ -59,17 +67,3 @@
     }
   }
 </style>
-
-<section>
-  <article>
-    <h1>
-      Getting on the internet <strong>should not</strong> be hard
-    </h1>
-    <p>
-      Creating a <strong>modern, beautiful, robust</strong> website can be pretty hard. Sometimes you just need to focus on your business and can’t really deal with the headache of building your own website. <strong>Let me make that easier for you.</strong> 
-    </p>
-    <footer>
-      <a href="#contact" class="btn btn-dark">Send me an email</a>
-    </footer>
-  </article>
-</section>
