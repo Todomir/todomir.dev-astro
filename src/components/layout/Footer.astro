@@ -1,3 +1,12 @@
+---
+  import { getDataByType } from '../../lib/prismic.js'
+  import Debug from 'astro/debug'
+  const res = await getDataByType('footer', { lang: Astro.props.lang })
+  const [result] = res.results
+
+  const footer = result.data
+---
+
 <footer class="break-container">
   <header>
     <svg viewBox="0 0 75 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +25,7 @@
   </header>
   <div class="links">
     <address>
-      <h1>Social Media</h1>
+      <h1>{footer.social_media_label}</h1>
       <ul>
         <li><a href="https://www.instagram.com/">Instagram</a></li>
         <li><a href="https://www.linkedin.com/in/todomir">Linkedin</a></li>
@@ -24,17 +33,16 @@
       </ul>
     </address>
     <address>
-      <h1>Contact me</h1>
+      <h1>{footer.contact_label}</h1>
       <ul>
         <li><a href="https://www.instagram.com/">Whatsapp</a></li>
         <li><a href="https://www.github.com/Todomir">Telegram</a></li>
         <li><a href="https://www.linkedin.com/in/todomir">E-mail</a></li>
-        <li><a href="https://www.github.com/Todomir">Phone</a></li>
       </ul>
     </address>
   </div>
   <div class="bottom">
-    <span>Designed and build with ❤️ by Abner Rodrigues </span>
+    <span>{footer.credits}</span>
     <a href="https://www.github.com/Todomir">Sitemap</a>
   </div>
 </footer>

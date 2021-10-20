@@ -84,6 +84,15 @@ export async function getPageByUID(type, slug, options) {
   return response;
 }
 
+export async function getDataByType(type, options) {
+  const response = await client.query(
+    Prismic.Predicates.at('document.type', type),
+    options
+  )
+
+  return response;
+}
+
 export async function getAllFormattedLanguages() {
   const response = await fetch(PRISMIC_API_URL)
   const json = await response.json()
