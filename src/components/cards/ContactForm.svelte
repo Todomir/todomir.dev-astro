@@ -1,6 +1,4 @@
 <script>
-  import { onMount, onDestroy } from 'svelte';
-
 	import Form from '../forms/Form.svelte'
 	import Input from '../forms/Input.svelte'
 	import Textarea from '../forms/Textarea.svelte'
@@ -11,7 +9,6 @@
 	// Props
 	export let slice
 	export let recaptchaKey
-  export let isSSR
 
 	// State
 	let formState = 'idle'
@@ -85,14 +82,6 @@
 			)
 		}
 	}
-
-  onMount(() => {
-		return !isSSR && (window.onSubmit = onSubmit)
-	});
-
-  onDestroy(() => {
-    return !isSSR && (window.onSubmit = null)
-  });
 </script>
 
 <section id="contact">

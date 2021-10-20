@@ -21,7 +21,6 @@ const recaptchaKey = process.env.RECAPTCHA_HTML
       return (
         <ContactForm 
           client:visible
-          isSSR={import.meta.env.SSR}
           recaptchaKey={recaptchaKey}
           slice={{ fields: slice.items, data: slice.primary }} 
         />

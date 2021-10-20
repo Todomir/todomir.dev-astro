@@ -1,6 +1,5 @@
 ---
   import { getDataByType } from '../../lib/prismic.js'
-  import Debug from 'astro/debug'
   const res = await getDataByType('footer', { lang: Astro.props.lang })
   const [result] = res.results
 

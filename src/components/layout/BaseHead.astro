@@ -1,5 +1,13 @@
 ---
-import site from "../../data/site.js";
+const site =  {
+	title: "Abner Rodrigues | todomir.dev",
+	description: "A freelancer based in Brazil, helping you take your ideas out of the planning phase with snazzy websites.",
+	url: "https://todomir.dev",
+	name: "Abner Rodrigues | todomir.dev",
+	facebookURL: "https://facebook.com",
+	twitterURL: "https://twitter.com/todomir__",
+	instagramURL: "https://instagram.com/todomir",
+}
 
 export interface Props {
   title?: string;
@@ -49,6 +57,8 @@ const { title, description, permalink, ogImageUrl, canonicalURL } = Astro.props;
 <meta property="twitter:description" content={description || site.description} />
 <meta property="twitter:image" content={ogImageUrl ? `${site.url}${ogImageUrl}` : `${site.url}/assets/img/social.png`} />
 
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <style>
   @font-face {
     font-family: 'Kyiv Type Sans';
@@ -56,7 +66,3 @@ const { title, description, permalink, ogImageUrl, canonicalURL } = Astro.props;
     font-display: fallback;
   }
 </style>
-
-<head>
-  <script src={`https://www.google.com/recaptcha/api.js`} async defer></script>
-</head>

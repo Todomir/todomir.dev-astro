@@ -1,5 +1,7 @@
 {
-  "compilerOptions": {
-    "moduleResolution": "node",
-  }
+	"compilerOptions": {
+		"moduleResolution": "node"
+	},
+	"include": ["**/*"],
+	"exclude": ["node_modules"]
 }
