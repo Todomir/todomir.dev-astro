@@ -50,22 +50,21 @@
     await sendEmail(data)
 	}
 
-  onMount(() => {
-    if (import.meta.env.SSR) {
-      return null
-    } else {
-      console.log('Mounted | Not on SSR')
-      window.onSubmit = onSubmit
-    }
-  })
+  // onMount(() => {
+  //   if (import.meta.env.SSR) {
+  //     return null
+  //   } else {
+  //     window.onSubmit = onSubmit
+  //   }
+  // })
 
-  onDestroy(() => {
-    if (import.meta.env.SSR) {
-      return null
-    } else {
-      window.onSubmit = null
-    }
-  })
+  // onDestroy(() => {
+  //   if (import.meta.env.SSR) {
+  //     return null
+  //   } else {
+  //     window.onSubmit = null
+  //   }
+  // })
 </script>
 
 <section id="contact">
@@ -81,7 +80,7 @@
 				Field does not exist
 			{/if}
 		{/each}
-		<button data-sitekey={recaptchaKey} data-callback="onSubmit" data-action="submit" class={`btn btn-dark ${formState} g-recaptcha`}>
+		<button class={`btn btn-dark ${formState} g-recaptcha`}>
 			{#if formState === 'loading'}
 				{slice.data.cta_loading}
 			{:else if formState === 'success'}

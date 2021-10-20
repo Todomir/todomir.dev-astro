@@ -2,13 +2,13 @@ const nodemailer = require('nodemailer')
 const { TRANSPORTER_EMAIL, TRANSPORTER_PASSWORD, RECAPTCHA_SECRET } = process.env
 
 exports.handler = async function sendEmail(evt, ctx, callback) {
-  if (evt.httpMethod !== 'POST') {
-    return { statusCode: 405 }
-  }
+	if (evt.httpMethod !== 'POST') {
+		return { statusCode: 405 }
+	}
 
-  const body = JSON.parse(evt.body);
+	const body = JSON.parse(evt.body)
 
-  const data = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+	const data = await fetch('https://www.google.com/recaptcha/api/siteverify', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -19,24 +19,24 @@ exports.handler = async function sendEmail(evt, ctx, callback) {
 		}),
 	}).then(res => res.json())
 
-  if (!data.success) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Invalid reCAPTCHA' }) }
-  }
+	if (!data.success) {
+		return callback(null, { statusCode: 400, body: JSON.stringify({ message: 'Invalid reCAPTCHA token' }) })
+	}
 
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.umbler.com',
-    port: '587',
-    from: TRANSPORTER_EMAIL,
+	const transporter = nodemailer.createTransport({
+		host: 'smtp.umbler.com',
+		port: '587',
+		from: TRANSPORTER_EMAIL,
 		auth: {
 			user: TRANSPORTER_EMAIL,
 			pass: TRANSPORTER_PASSWORD,
 		},
 	})
 
-  const mailOptions = {
+	const mailOptions = {
 		from: TRANSPORTER_EMAIL,
-    to: TRANSPORTER_EMAIL,
-    replyTo: body.email,
+		to: TRANSPORTER_EMAIL,
+		replyTo: body.email,
 		subject: body.subject,
 		text: body.message,
 		html: `
@@ -51,10 +51,10 @@ exports.handler = async function sendEmail(evt, ctx, callback) {
     `,
 	}
 
-  try {
-    const info = await transporter.sendMail(mailOptions)
-    callback(null, { statusCode: 200, body: JSON.stringify(info) })
-  } catch (error) {
-    callback(error)
-  }
+	try {
+		const info = await transporter.sendMail(mailOptions)
+		callback(null, { statusCode: 200, body: JSON.stringify(info) })
+	} catch (error) {
+		callback(error)
+	}
 }

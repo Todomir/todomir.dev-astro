@@ -1,18 +1,22 @@
 <script>
 	export let onSubmit
-  export let recaptchaKey
+	export let recaptchaKey
 
 	const handleSubmit = e => {
-		const formData = new FormData(e.target)
-
-		const data = {}
-		for (let field of formData) {
-			const [key, value] = field
-			data[key] = value
-		}
+    e.preventDefault();
 
 		grecaptcha.ready(() => {
-			grecaptcha.execute(recaptchaKey, { action: 'submit' }).then(token => onSubmit({ ...data, token }))
+			const formData = new FormData(e.target)
+
+			const data = {}
+			for (let field of formData) {
+				const [key, value] = field
+				data[key] = value
+			}
+
+			grecaptcha.execute(recaptchaKey, { action: 'submit' }).then(async token => {
+				await onSubmit({ ...data, token })
+			})
 		})
 	}
 </script>
