@@ -1,9 +1,12 @@
 <script>
-  export let name;
-  export let type = 'text';
-  export let label;
-  export let placeholder;
-  export let required = false;
+  import Icon from '../Icon.svelte'
+
+  export let name
+  export let type = 'text'
+  export let label
+  export let placeholder
+  export let required = false
+  export let icon
 </script>
 
 <div class="input-block">
@@ -11,7 +14,9 @@
     {label}
   </label>
   <div class="input">
-    <slot name="icon" class="icon"></slot>
+    {#if icon}
+      <Icon icon={icon} />
+    {/if}
     <input 
       required={required} 
       type={type} 

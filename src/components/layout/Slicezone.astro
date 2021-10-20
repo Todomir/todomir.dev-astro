@@ -1,4 +1,5 @@
 ---
+import ContactForm from '../cards/ContactForm.svelte'
 import Subhero from './Subhero.astro'
 import Testimonials from './Testimonials.astro'
 import Work from './Work.astro'
@@ -14,6 +15,13 @@ const { slices } = Astro.props
       return <Testimonials slice={slice.items} />
     case 'work_section':
       return <Work slice={slice.items} />
+    case 'contact_form':
+      return (
+        <ContactForm 
+          client:visible 
+          slice={{ fields: slice.items, data: slice.primary }} 
+        />
+      )
     default:
       return null
 }})}

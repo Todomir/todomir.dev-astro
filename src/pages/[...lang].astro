@@ -3,8 +3,6 @@
   import { getPageByUID, getAllFormattedLanguages } from '../lib/prismic.js'
   
   import BaseLayout from '../components/layout/BaseLayout.astro'
-  
-  import ContactForm from '../components/cards/ContactForm.svelte'
 
   import Hero from '../components/layout/Hero.astro'
   import Slicezone from '../components/layout/Slicezone.astro'
@@ -26,7 +24,13 @@
       'project.cta_label',
       'project.cta_link',
       'project.type',
-      'project.image'
+      'project.image',
+      'form_field.label',
+      'form_field.name',
+      'form_field.type',
+      'form_field.placeholder',
+      'form_field.field',
+      'form_field.icon'
     ]
   })
 
@@ -76,5 +80,4 @@
     }}
   />
   <Slicezone slices={page.body} />
-  <ContactForm client:visible />
 </BaseLayout>
