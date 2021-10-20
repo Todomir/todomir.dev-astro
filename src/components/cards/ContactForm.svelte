@@ -11,8 +11,6 @@
 	export let slice
 	const fields = slice.fields.map(field => field.fields.data)
 
-	console.log(fields)
-
 	function fire(particleRatio, opts) {
 		confetti(
 			Object.assign({}, { origin: { y: 0.7 } }, opts, {
