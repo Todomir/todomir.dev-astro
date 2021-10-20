@@ -1,9 +1,12 @@
 <script>
+  import {onMount, onDestroy} from 'svelte';
+
+	import { confetti } from '../../utils'
+
 	import Form from '../forms/Form.svelte'
 	import Input from '../forms/Input.svelte'
 	import Textarea from '../forms/Textarea.svelte'
 
-	import confetti from 'canvas-confetti'
 	import prismicDom from 'prismic-dom'
 
 	// Props
@@ -15,59 +18,18 @@
 
 	$: fields = slice.fields.map(field => field.fields.data)
 
-	function fire(particleRatio, opts) {
-		confetti(
-			Object.assign({}, { origin: { y: 0.7 } }, opts, {
-				particleCount: Math.floor(200 * particleRatio),
-			})
-		)
-	}
-
-	async function confettiExplosion() {
-		return await new Promise(resolve => {
-			setTimeout(() => {
-				formState = 'success'
-				fire(0.25, {
-					spread: 26,
-					startVelocity: 55,
-				})
-				fire(0.2, {
-					spread: 60,
-				})
-				fire(0.35, {
-					spread: 100,
-					decay: 0.91,
-					scalar: 0.8,
-				})
-				fire(0.1, {
-					spread: 120,
-					startVelocity: 25,
-					decay: 0.92,
-					scalar: 1.2,
-				})
-				fire(0.1, {
-					spread: 120,
-					startVelocity: 45,
-				})
-				resolve()
-			}, 2000)
-		})
-	}
-
-	const onSubmit = async data => {
-		formState = 'loading'
-
+	const sendEmail = async data => {
 		try {
 			const response = await fetch('/.netlify/functions/send-email', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({ ...data }),
+				body: JSON.stringify(data),
 			})
 
 			if (response.ok) {
-				await confettiExplosion()
+				await confetti()
 			} else {
 				formState = 'error'
 			}
@@ -82,12 +44,34 @@
 			)
 		}
 	}
+
+	const onSubmit = async (data) => {
+		formState = 'loading'
+    await sendEmail(data)
+	}
+
+  onMount(() => {
+    if (import.meta.env.SSR) {
+      return null
+    } else {
+      console.log('Mounted | Not on SSR')
+      window.onSubmit = onSubmit
+    }
+  })
+
+  onDestroy(() => {
+    if (import.meta.env.SSR) {
+      return null
+    } else {
+      window.onSubmit = null
+    }
+  })
 </script>
 
 <section id="contact">
 	<h1>{prismicDom.RichText.asText(slice.data.title)}</h1>
 	<p>{prismicDom.RichText.asText(slice.data.description)}</p>
-	<Form {onSubmit}>
+	<Form {onSubmit} {recaptchaKey}>
 		{#each fields as field}
 			{#if field.field === 'input'}
 				<Input required type={field.type} name={field.name} label={field.label} placeholder={field.placeholder} icon={field.icon} />

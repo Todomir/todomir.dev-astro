@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer')
-const { TRANSPORTER_EMAIL, TRANSPORTER_PASSWORD } = process.env
+const { TRANSPORTER_EMAIL, TRANSPORTER_PASSWORD, RECAPTCHA_SECRET } = process.env
 
 exports.handler = async function sendEmail(evt, ctx, callback) {
   if (evt.httpMethod !== 'POST') {
@@ -7,6 +7,21 @@ exports.handler = async function sendEmail(evt, ctx, callback) {
   }
 
   const body = JSON.parse(evt.body);
+
+  const data = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			secret: RECAPTCHA_SECRET,
+			response: body.token,
+		}),
+	}).then(res => res.json())
+
+  if (!data.success) {
+    return { statusCode: 400, body: JSON.stringify({ error: 'Invalid reCAPTCHA' }) }
+  }
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.umbler.com',

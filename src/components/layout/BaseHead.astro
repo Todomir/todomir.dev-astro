@@ -57,7 +57,7 @@ const { title, description, permalink, ogImageUrl, canonicalURL } = Astro.props;
 <meta property="twitter:description" content={description || site.description} />
 <meta property="twitter:image" content={ogImageUrl ? `${site.url}${ogImageUrl}` : `${site.url}/assets/img/social.png`} />
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src={`https://www.google.com/recaptcha/api.js?render=6Lc8l-EcAAAAAH5y0YVhOuG-CkSWWi-NlynO5Fjs`} async defer></script>
 
 <style>
   @font-face {
