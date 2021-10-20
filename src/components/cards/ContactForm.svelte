@@ -1,15 +1,22 @@
 <script>
+  import { onMount, onDestroy } from 'svelte';
+
 	import Form from '../forms/Form.svelte'
 	import Input from '../forms/Input.svelte'
 	import Textarea from '../forms/Textarea.svelte'
-	import Icon from '../Icon.svelte'
 
 	import confetti from 'canvas-confetti'
 	import prismicDom from 'prismic-dom'
 
-	let formState = 'idle'
+	// Props
 	export let slice
-	const fields = slice.fields.map(field => field.fields.data)
+	export let recaptchaKey
+  export let isSSR
+
+	// State
+	let formState = 'idle'
+
+	$: fields = slice.fields.map(field => field.fields.data)
 
 	function fire(particleRatio, opts) {
 		confetti(
@@ -17,6 +24,37 @@
 				particleCount: Math.floor(200 * particleRatio),
 			})
 		)
+	}
+
+	async function confettiExplosion() {
+		return await new Promise(resolve => {
+			setTimeout(() => {
+				formState = 'success'
+				fire(0.25, {
+					spread: 26,
+					startVelocity: 55,
+				})
+				fire(0.2, {
+					spread: 60,
+				})
+				fire(0.35, {
+					spread: 100,
+					decay: 0.91,
+					scalar: 0.8,
+				})
+				fire(0.1, {
+					spread: 120,
+					startVelocity: 25,
+					decay: 0.92,
+					scalar: 1.2,
+				})
+				fire(0.1, {
+					spread: 120,
+					startVelocity: 45,
+				})
+				resolve()
+			}, 2000)
+		})
 	}
 
 	const onSubmit = async data => {
@@ -32,34 +70,7 @@
 			})
 
 			if (response.ok) {
-				await new Promise(resolve => {
-					setTimeout(() => {
-						formState = 'success'
-						fire(0.25, {
-							spread: 26,
-							startVelocity: 55,
-						})
-						fire(0.2, {
-							spread: 60,
-						})
-						fire(0.35, {
-							spread: 100,
-							decay: 0.91,
-							scalar: 0.8,
-						})
-						fire(0.1, {
-							spread: 120,
-							startVelocity: 25,
-							decay: 0.92,
-							scalar: 1.2,
-						})
-						fire(0.1, {
-							spread: 120,
-							startVelocity: 45,
-						})
-						resolve()
-					}, 2000)
-				})
+				await confettiExplosion()
 			} else {
 				formState = 'error'
 			}
@@ -74,6 +85,14 @@
 			)
 		}
 	}
+
+  onMount(() => {
+		return !isSSR && (window.onSubmit = onSubmit)
+	});
+
+  onDestroy(() => {
+    return !isSSR && (window.onSubmit = null)
+  });
 </script>
 
 <section id="contact">
@@ -89,7 +108,7 @@
 				Field does not exist
 			{/if}
 		{/each}
-		<button type="submit" class={`btn btn-dark ${formState}`}>
+		<button data-sitekey={recaptchaKey} data-callback="onSubmit" data-action="submit" class={`btn btn-dark ${formState} g-recaptcha`}>
 			{#if formState === 'loading'}
 				{slice.data.cta_loading}
 			{:else if formState === 'success'}
