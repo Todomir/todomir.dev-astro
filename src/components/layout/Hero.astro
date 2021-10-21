@@ -1,37 +1,37 @@
 ---
-  import prismicDom from 'prismic-dom'
-  import { serializer } from '../../lib/prismic.js'
-  const { content } = Astro.props
+import prismicDom from "prismic-dom";
+import { serializer } from "../../lib/prismic.js";
+const { content } = Astro.props;
 
-  const { Elements } = prismicDom.RichText;
+const { Elements } = prismicDom.RichText;
 
-  import styles from '../styles/Hero.module.scss'
+import styles from "../styles/Hero.module.scss";
 
-  const header = prismicDom.RichText.asHtml(
-    content.title, 
-    null, 
-    (type, _element, _content, children) => {
-      if (type === Elements.heading1) {
-        return `<h1 class=${styles.title}>${children.join('')}</h1>`
-      } else if (type === Elements.strong) {
-        return `
+const header = prismicDom.RichText.asHtml(
+  content.title,
+  null,
+  (type, _element, _content, children) => {
+    if (type === Elements.heading1) {
+      return `<h1 class=${styles.title}>${children.join("")}</h1>`;
+    } else if (type === Elements.strong) {
+      return `
           <strong class=${styles.strong}>
-            ${children.join('')}
+            ${children.join("")}
             <img class=${styles.circle} src="/assets/img/circle.svg" alt="" />
           </strong>
-        `
-      }
-      return null
+        `;
     }
-  )
-  const paragraph = prismicDom.RichText.asHtml(
-    content.paragraph, 
-    null, 
-    (type, element, content, children) => 
-      serializer(type, element, content, children, {
-        p: styles.paragraph
-      })
-  )
+    return null;
+  }
+);
+const paragraph = prismicDom.RichText.asHtml(
+  content.paragraph,
+  null,
+  (type, element, content, children) =>
+    serializer(type, element, content, children, {
+      p: styles.paragraph,
+    })
+);
 ---
 
 <section>
@@ -47,11 +47,11 @@
   section {
     --header-padding-end: clamp(13.2rem, 6.5199rem + 16.1355vw, 37.5rem);
 
-    max-width: 95.3rem;    
+    max-width: 95.3rem;
     margin: 0 auto;
 
     padding-block-end: var(--header-padding-end);
-  
+
     footer {
       display: flex;
       flex-direction: column;
@@ -61,6 +61,5 @@
         flex-direction: row;
       }
     }
-
   }
 </style>

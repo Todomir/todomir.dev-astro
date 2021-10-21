@@ -4,15 +4,13 @@ export default {
   // dist: './dist',       // When running `astro build`, path to final static output
   // public: './public',   // A folder of static files Astro will copy to the root. Useful for favicons, images, and other files that don’t need processing.
   buildOptions: {
-    site: 'https://todomir.dev',
-    sitemap: true,         // Generate sitemap (set to "false" to disable)
+    site: "https://todomir.dev",
+    sitemap: true, // Generate sitemap (set to "false" to disable)
   },
   devOptions: {
     // hostname: 'localhost',  // The hostname to run the dev server on.
     // port: 3000,             // The port to run the dev server on.
     // tailwindConfig: '',     // Path to tailwind.config.js if used, e.g. './tailwind.config.js'
   },
-  renderers: [
-    "@astrojs/renderer-svelte"
-  ],
+  renderers: ["@astrojs/renderer-svelte"],
 };

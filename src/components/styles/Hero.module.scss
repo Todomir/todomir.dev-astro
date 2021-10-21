@@ -9,7 +9,7 @@
   position: relative;
 
   .circle {
-    --size: clamp(12.4rem, 5.3500rem + 19.5833vw, 21.8rem);
+    --size: clamp(12.4rem, 5.35rem + 19.5833vw, 21.8rem);
 
     width: var(--size);
     height: var(--size);

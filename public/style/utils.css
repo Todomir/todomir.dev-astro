@@ -1,48 +1,48 @@
 .btn-primary {
-	background-color: var(--color-primary);
-	color: var(--color-white);
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
 
 .btn-primary:hover {
-	background-color: var(--color-primary-light);
-	transform: translateY(-0.1rem);
+  background-color: var(--color-primary-light);
+  transform: translateY(-0.1rem);
 }
 
 .btn-primary:active {
-	background-color: var(--color-primary-dark);
-	transform: translateY(0.01rem);
+  background-color: var(--color-primary-dark);
+  transform: translateY(0.01rem);
 }
 
 .btn-secondary {
-	background-color: transparent;
-	color: var(--color-primary);
+  background-color: transparent;
+  color: var(--color-primary);
 
-	border: 1px solid var(--color-primary);
+  border: 1px solid var(--color-primary);
 }
 
 .btn-secondary:hover {
-	background-color: var(--color-secondary-transparent);
-	transform: translateY(-0.1rem);
+  background-color: var(--color-secondary-transparent);
+  transform: translateY(-0.1rem);
 }
 
 .btn-secondary:active {
-	background-color: var(--color-primary-transparent);
-	transform: translateY(0.01rem);
+  background-color: var(--color-primary-transparent);
+  transform: translateY(0.01rem);
 }
 
 .btn-dark {
-	--outline-color: var(--color-darkest);
+  --outline-color: var(--color-darkest);
 
-	background-color: var(--color-darker);
-	color: var(--color-white);
+  background-color: var(--color-darker);
+  color: var(--color-white);
 }
 
 .btn-dark:hover {
-	background-color: var(--color-dark);
-	transform: translateY(-0.1rem);
+  background-color: var(--color-dark);
+  transform: translateY(-0.1rem);
 }
 
 .btn-dark:active {
-	background-color: var(--color-darkest);
-	transform: translateY(0.01rem);
+  background-color: var(--color-darkest);
+  transform: translateY(0.01rem);
 }

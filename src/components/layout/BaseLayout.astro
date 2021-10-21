@@ -1,7 +1,7 @@
 ---
-import BaseHead from './BaseHead.astro';
-import Header from './Header.svelte';
-import Footer from './Footer.astro';
+import BaseHead from "./BaseHead.astro";
+import Header from "./Header.svelte";
+import Footer from "./Footer.astro";
 
 export interface IProps {
   title?: string;
@@ -12,22 +12,19 @@ export interface IProps {
   headerCta?: string;
 }
 
-const { title, description, permalink, canonicalURL, lang, headerCta } = Astro.props;
+const { title, description, permalink, canonicalURL, lang, headerCta } =
+  Astro.props;
 ---
-<html lang={lang}>
+
+<html {lang}>
   <head>
-    <BaseHead 
-      title={title} 
-      description={description} 
-      permalink={permalink} 
-      canonicalURL={canonicalURL} 
-    />
+    <BaseHead {title} {description} {permalink} {canonicalURL} />
   </head>
   <body>
     <Header cta={headerCta} client:load />
-      <main>
-          <slot/>
-      </main>
-    <Footer lang={lang}/>
+    <main>
+      <slot />
+    </main>
+    <Footer {lang} />
   </body>
 </html>

@@ -1,23 +1,19 @@
 ---
 export interface IProps {
-  id: string
-  title: string
-  variant: 'alpha' | 'beta' | 'kappa'
+  id: string;
+  title: string;
+  variant: "alpha" | "beta" | "kappa";
   image: {
-    src: string
-    alt: string
-  }
+    src: string;
+    alt: string;
+  };
 }
 
-const { id, title, variant, image, cta } = Astro.props
+const { id, title, variant, image, cta } = Astro.props;
 ---
 
 <article>
-  <img
-    class={`img ${variant}`}
-    alt={image.alt} 
-    src={image.src} 
-  />
+  <img class={`img ${variant}`} alt={image.alt} src={image.src} />
   <header class={`header ${variant}`}>
     <h2>{title}</h2>
     <a href="/" class={`btn ${variant}`}>{cta.label}</a>
@@ -55,15 +51,15 @@ const { id, title, variant, image, cta } = Astro.props
       z-index: 1;
 
       --work-heading-fluid-size: clamp(1.6rem, 1.507rem + 0.4651vw, 2.4rem);
-	    --work-button-fluid-size: clamp(1.4rem, 1.4233rem + -0.1163vw, 1.2rem);
-      
+      --work-button-fluid-size: clamp(1.4rem, 1.4233rem + -0.1163vw, 1.2rem);
+
       h2 {
         --font-weight: 800;
         --font-contrast: 800;
 
         font-size: 2rem;
-        margin-bottom: clamp(0.4rem, 0.1000rem + 0.8333vw, 0.8rem);
-        
+        margin-bottom: clamp(0.4rem, 0.1rem + 0.8333vw, 0.8rem);
+
         color: var(--color-white);
         background-color: var(--color-primary);
         width: max-content;
@@ -88,7 +84,7 @@ const { id, title, variant, image, cta } = Astro.props
 
       &.alpha {
         margin-top: -1.2em;
-        margin-left: 1.2em
+        margin-left: 1.2em;
       }
 
       &.beta {

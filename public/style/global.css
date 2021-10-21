@@ -1,165 +1,167 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 
-	line-height: 1.45;
+  line-height: 1.45;
 
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
 
-	font-variation-settings: 'wght' var(--font-weight), 'CONT' var(--font-contrast), 'MIDL' var(--font-midline);
-	font-weight: normal;
+  font-variation-settings: "wght" var(--font-weight),
+    "CONT" var(--font-contrast), "MIDL" var(--font-midline);
+  font-weight: normal;
 }
 
 *:focus {
-	--background-color: var(--color-white);
-	--outline-color: var(--color-secondary);
+  --background-color: var(--color-white);
+  --outline-color: var(--color-secondary);
 
-	outline: none;
-	box-shadow: 0 0 0 2px var(--background-color), 0 0 0 5px var(--outline-color);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--background-color), 0 0 0 5px var(--outline-color);
 }
 
 :root {
-	/* Font configuration */
-	--font-family: 'Kyiv Type Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  /* Font configuration */
+  --font-family: "Kyiv Type Sans", -apple-system, BlinkMacSystemFont, Segoe UI,
+    Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
 
-	font-family: var(--font-family);
+  font-family: var(--font-family);
 
-	--font-weight: 400;
-	--font-contrast: 1000;
-	--font-midline: 0;
+  --font-weight: 400;
+  --font-contrast: 1000;
+  --font-midline: 0;
 
-	/* Color configuration */
-	--color-primary: hsl(243, 73%, 59%);
-	--color-primary-dark: hsl(243, 78%, 50%);
-	--color-primary-light: hsl(243, 65%, 65%);
-	--color-primary-transparent: hsla(243, 73%, 59%, 0.4);
+  /* Color configuration */
+  --color-primary: hsl(243, 73%, 59%);
+  --color-primary-dark: hsl(243, 78%, 50%);
+  --color-primary-light: hsl(243, 65%, 65%);
+  --color-primary-transparent: hsla(243, 73%, 59%, 0.4);
 
-	--color-secondary: hsl(240, 64%, 71%);
-	--color-secondary-dark: hsl(240, 70%, 62%);
-	--color-secondary-light: hsl(240, 60%, 82%);
-	--color-secondary-transparent: hsla(240, 64%, 71%, 0.3);
+  --color-secondary: hsl(240, 64%, 71%);
+  --color-secondary-dark: hsl(240, 70%, 62%);
+  --color-secondary-light: hsl(240, 60%, 82%);
+  --color-secondary-transparent: hsla(240, 64%, 71%, 0.3);
 
-	--color-light: hsl(0, 0%, 86%);
-	--color-dark: hsl(210, 50%, 25%);
-	--color-darker: hsl(210, 67%, 14%);
-	--color-darkest: hsl(210, 72%, 9%);
+  --color-light: hsl(0, 0%, 86%);
+  --color-dark: hsl(210, 50%, 25%);
+  --color-darker: hsl(210, 67%, 14%);
+  --color-darkest: hsl(210, 72%, 9%);
 
-	--color-error: hsl(4, 90%, 58%);
-	--color-error-dark: hsl(4, 65%, 50%);
-	--color-success: hsl(120, 39%, 54%);
-	--color-success-dark: hsl(120, 33%, 46%);
+  --color-error: hsl(4, 90%, 58%);
+  --color-error-dark: hsl(4, 65%, 50%);
+  --color-success: hsl(120, 39%, 54%);
+  --color-success-dark: hsl(120, 33%, 46%);
 
-	--color-bg: #eeeeee;
-	--color-white: #ffffff;
+  --color-bg: #eeeeee;
+  --color-white: #ffffff;
 
-	/* Fluid configuration */
-	--body-padding: clamp(8rem, -4.6179rem + 30.4781vw, 53.9rem);
-	--heading-fluid-size: clamp(3.2rem, 2.3203rem + 2.1248vw, 6.4rem);
-	--body-fluid-size: clamp(1.6rem, 1.3801rem + 0.5312vw, 2.4rem);
-	--button-fluid-size: clamp(1.6rem, 1.545rem + 0.1328vw, 1.8rem);
+  /* Fluid configuration */
+  --body-padding: clamp(8rem, -4.6179rem + 30.4781vw, 53.9rem);
+  --heading-fluid-size: clamp(3.2rem, 2.3203rem + 2.1248vw, 6.4rem);
+  --body-fluid-size: clamp(1.6rem, 1.3801rem + 0.5312vw, 2.4rem);
+  --button-fluid-size: clamp(1.6rem, 1.545rem + 0.1328vw, 1.8rem);
 }
 
 html,
 body {
-	scroll-behavior: smooth;
-	overflow-x: hidden;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 html {
-	font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-	width: 100%;
-	min-height: 100vh;
+  width: 100%;
+  min-height: 100vh;
 
-	padding-inline: var(--body-padding);
+  padding-inline: var(--body-padding);
 
-	background: var(--color-bg);
-	color: var(--color-darker);
+  background: var(--color-bg);
+  color: var(--color-darker);
 
-	--font-weight: 600;
-	--font-contrast: 400;
-	letter-spacing: -0.04em;
-	line-height: 160%;
+  --font-weight: 600;
+  --font-contrast: 400;
+  letter-spacing: -0.04em;
+  line-height: 160%;
 }
 
 main {
-	padding-block: clamp(13.2rem, 10.6709rem + 6.1089vw, 22.4rem);
+  padding-block: clamp(13.2rem, 10.6709rem + 6.1089vw, 22.4rem);
 }
 
 p {
-	font-size: var(--body-fluid-size);
-	line-height: 170%;
+  font-size: var(--body-fluid-size);
+  line-height: 170%;
 }
 
 button,
 .btn {
-	--font-weight: 800;
-	--font-contrast: 700;
+  --font-weight: 800;
+  --font-contrast: 700;
 
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 
-	font-family: var(--font-family);
-	font-size: var(--button-fluid-size);
+  font-family: var(--font-family);
+  font-size: var(--button-fluid-size);
 
-	padding-inline: 1.6em;
-	padding-block: 0.8em;
+  padding-inline: 1.6em;
+  padding-block: 0.8em;
 
-	border-radius: 0.5em;
-	border: none;
+  border-radius: 0.5em;
+  border: none;
 
-	cursor: pointer;
+  cursor: pointer;
 
-	will-change: background-color, transform;
-	transition: all 0.35s ease-in-out;
+  will-change: background-color, transform;
+  transition: all 0.35s ease-in-out;
 
-	text-decoration: none;
+  text-decoration: none;
 }
 
 button:hover,
 .btn:hover {
-	--font-weight: 1000;
-	transition: all 0.6s ease-in-out;
+  --font-weight: 1000;
+  transition: all 0.6s ease-in-out;
 }
 
 button:active,
 .btn:active {
-	transition: all 0.12s ease-in-out;
+  transition: all 0.12s ease-in-out;
 }
 
 .btn.error {
-	background-color: var(--color-error);
-	color: var(--color-white);
-	cursor: not-allowed;
+  background-color: var(--color-error);
+  color: var(--color-white);
+  cursor: not-allowed;
 }
 
 .btn.error:focus,
 .btn.error:hover,
 .btn.error:active {
-	background-color: var(--color-error-dark);
-	color: var(--color-white);
-	cursor: not-allowed;
+  background-color: var(--color-error-dark);
+  color: var(--color-white);
+  cursor: not-allowed;
 }
 
 .btn.success {
-	background-color: var(--color-success);
-	color: var(--color-darkest);
-	cursor: not-allowed;
+  background-color: var(--color-success);
+  color: var(--color-darkest);
+  cursor: not-allowed;
 }
 
 .btn.success:focus,
 .btn.success:hover,
 .btn.success:active {
-	background-color: var(--color-success-dark);
-	color: var(--color-white);
-	cursor: not-allowed;
+  background-color: var(--color-success-dark);
+  color: var(--color-white);
+  cursor: not-allowed;
 }
 
 button:disabled,
@@ -170,19 +172,19 @@ button:disabled:active,
 .btn:disabled:active,
 button:disabled:hover,
 .btn:disabled:hover {
-	background-color: var(--color-light);
-	color: hsl(0, 0%, 70%);
-	cursor: not-allowed;
+  background-color: var(--color-light);
+  color: hsl(0, 0%, 70%);
+  cursor: not-allowed;
 }
 
 h1 {
-	--font-contrast: 750;
-	--font-weight: 700;
-	font-size: var(--heading-fluid-size);
-	line-height: normal;
+  --font-contrast: 750;
+  --font-weight: 700;
+  font-size: var(--heading-fluid-size);
+  line-height: normal;
 
-	letter-spacing: -0.06em;
-	margin-block-end: clamp(2.4rem, 1.8502rem + 1.328vw, 4.4rem);
+  letter-spacing: -0.06em;
+  margin-block-end: clamp(2.4rem, 1.8502rem + 1.328vw, 4.4rem);
 }
 
 h1,
@@ -192,18 +194,18 @@ h4,
 h5,
 h6,
 p {
-	text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
 }
 
 strong {
-	--font-contrast: 750;
-	--font-weight: 1000;
-	--font-midline: 500;
-	font-size: inherit;
-	letter-spacing: -0.01em;
+  --font-contrast: 750;
+  --font-weight: 1000;
+  --font-midline: 500;
+  font-size: inherit;
+  letter-spacing: -0.01em;
 }
 
 .break-container {
-	width: calc(100% + (var(--body-padding) * 2));
-	margin-inline: calc(-1 * var(--body-padding));
+  width: calc(100% + (var(--body-padding) * 2));
+  margin-inline: calc(-1 * var(--body-padding));
 }

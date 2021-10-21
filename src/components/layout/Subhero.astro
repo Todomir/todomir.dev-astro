@@ -1,6 +1,6 @@
 ---
-import prismicDom from 'prismic-dom'
-const { slice } = Astro.props
+import prismicDom from "prismic-dom";
+const { slice } = Astro.props;
 ---
 
 <section>
@@ -23,7 +23,7 @@ const { slice } = Astro.props
     padding-block: var(--subheading-padding);
 
     &:before {
-      content: '';
+      content: "";
 
       position: absolute;
       inset: 0;
@@ -35,20 +35,20 @@ const { slice } = Astro.props
       background: var(--color-primary);
 
       clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
-    } 
+    }
 
     article {
       max-width: 84.3rem;
-	    margin: 0 auto;
+      margin: 0 auto;
 
       display: flex;
       flex-direction: column;
       justify-content: center;
 
       h1 {
-        margin-block-end: clamp(2.4rem, 1.8502rem + 1.3280vw, 4.4rem);
+        margin-block-end: clamp(2.4rem, 1.8502rem + 1.328vw, 4.4rem);
       }
-    
+
       footer {
         margin-block-start: clamp(3.6rem, 2.8303rem + 1.8592vw, 6.4rem);
 
