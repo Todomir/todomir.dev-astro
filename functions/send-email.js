@@ -1,3 +1,5 @@
+require('isomorphic-fetch')
+
 const nodemailer = require('nodemailer')
 const axios = require('redaxios')
 
