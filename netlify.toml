@@ -4,6 +4,36 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/_astro/*"
+  to = "/_astro/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/_astro_frontend/*"
+  to = "/_astro_frontend/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/_snowpack/*"
+  to = "/_snowpack/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/style/*"
+  to = "/style/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/pt-BR/:splat"
   status = 302
