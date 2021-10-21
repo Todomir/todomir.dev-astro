@@ -4,6 +4,25 @@
   }
 }
 
+.strong {
+  color: var(--color-primary);
+  position: relative;
+
+  .circle {
+    --size: clamp(12.4rem, 5.3500rem + 19.5833vw, 21.8rem);
+
+    width: var(--size);
+    height: var(--size);
+
+    opacity: 0.15;
+    z-index: -1;
+
+    position: absolute;
+    top: -100%;
+    left: -20%;
+  }
+}
+
 .paragraph {
   max-width: 71.9rem;
   margin-block-end: clamp(3.6rem, 2.8303rem + 1.8592vw, 6.4rem);
