@@ -1,15 +1,15 @@
 ---
 export interface IProps {
-  id: string;
-  title: string;
-  variant: "alpha" | "beta" | "kappa";
+  id: string
+  title: string
+  variant: 'alpha' | 'beta' | 'kappa'
   image: {
-    src: string;
-    alt: string;
-  };
+    src: string
+    alt: string
+  }
 }
 
-const { id, title, variant, image, cta } = Astro.props;
+const { id, title, variant, image, cta } = Astro.props
 ---
 
 <article>

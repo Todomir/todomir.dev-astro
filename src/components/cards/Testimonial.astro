@@ -1,17 +1,17 @@
 ---
 export interface IProps {
-  client: string;
+  client: string
   project: {
-    url: string;
-    name: string;
-  };
+    url: string
+    name: string
+  }
   avatar: {
-    url: string;
-    alt: string;
-  };
-  role: string;
-  testimonial: string;
-  variant?: "left" | "right";
+    url: string
+    alt: string
+  }
+  role: string
+  testimonial: string
+  variant?: 'left' | 'right'
 }
 
 const {
@@ -20,8 +20,8 @@ const {
   avatar,
   role,
   testimonial,
-  variant = "right",
-} = Astro.props;
+  variant = 'right',
+} = Astro.props
 ---
 
 <blockquote class={variant} cite={project.url}>

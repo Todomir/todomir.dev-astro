@@ -1,29 +1,29 @@
 ---
-import prismicDom from "prismic-dom";
-import { serializer } from "../../lib/prismic.js";
-const { content } = Astro.props;
+import prismicDom from 'prismic-dom'
+import { serializer } from '../../lib/prismic.js'
+const { content } = Astro.props
 
-const { Elements } = prismicDom.RichText;
+const { Elements } = prismicDom.RichText
 
-import styles from "../styles/Hero.module.scss";
+import styles from '../styles/Hero.module.scss'
 
 const header = prismicDom.RichText.asHtml(
   content.title,
   null,
   (type, _element, _content, children) => {
     if (type === Elements.heading1) {
-      return `<h1 class=${styles.title}>${children.join("")}</h1>`;
+      return `<h1 class=${styles.title}>${children.join('')}</h1>`
     } else if (type === Elements.strong) {
       return `
           <strong class=${styles.strong}>
-            ${children.join("")}
+            ${children.join('')}
             <img class=${styles.circle} src="/assets/img/circle.svg" alt="" />
           </strong>
-        `;
+        `
     }
-    return null;
+    return null
   }
-);
+)
 const paragraph = prismicDom.RichText.asHtml(
   content.paragraph,
   null,
@@ -31,7 +31,7 @@ const paragraph = prismicDom.RichText.asHtml(
     serializer(type, element, content, children, {
       p: styles.paragraph,
     })
-);
+)
 ---
 
 <section>

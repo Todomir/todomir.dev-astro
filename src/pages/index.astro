@@ -1,44 +1,44 @@
 ---
 // Start of import block -------
-import { getPageByUID, getAllFormattedLanguages } from "../lib/prismic.js";
+import { getPageByUID, getAllFormattedLanguages } from '../lib/prismic.js'
 
-import BaseLayout from "../components/layout/BaseLayout.astro";
+import BaseLayout from '../components/layout/BaseLayout.astro'
 
-import Hero from "../components/layout/Hero.astro";
-import Slicezone from "../components/layout/Slicezone.astro";
+import Hero from '../components/layout/Hero.astro'
+import Slicezone from '../components/layout/Slicezone.astro'
 
 // End of import block -------
 
-const { lang } = Astro.request.params;
-const { data: page } = await getPageByUID("homepage", "home", {
+const { lang } = Astro.request.params
+const { data: page } = await getPageByUID('homepage', 'home', {
   lang,
   fetchLinks: [
-    "testimonial.client",
-    "testimonial.avatar",
-    "testimonial.role",
-    "testimonial.project_name",
-    "testimonial.project_link",
-    "testimonial.variant",
-    "testimonial.testimonial",
-    "project.name",
-    "project.cta_label",
-    "project.cta_link",
-    "project.type",
-    "project.image",
-    "form_field.label",
-    "form_field.name",
-    "form_field.type",
-    "form_field.placeholder",
-    "form_field.field",
-    "form_field.icon",
+    'testimonial.client',
+    'testimonial.avatar',
+    'testimonial.role',
+    'testimonial.project_name',
+    'testimonial.project_link',
+    'testimonial.variant',
+    'testimonial.testimonial',
+    'project.name',
+    'project.cta_label',
+    'project.cta_link',
+    'project.type',
+    'project.image',
+    'form_field.label',
+    'form_field.name',
+    'form_field.type',
+    'form_field.placeholder',
+    'form_field.field',
+    'form_field.icon',
   ],
-});
+})
 
 export async function getStaticPaths() {
-  const languages = await getAllFormattedLanguages();
-  return languages.map((lang) => ({
+  const languages = await getAllFormattedLanguages()
+  return languages.map(lang => ({
     params: { lang },
-  }));
+  }))
 }
 ---
 

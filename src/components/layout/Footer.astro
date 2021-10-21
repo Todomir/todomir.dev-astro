@@ -1,9 +1,9 @@
 ---
-import { getDataByType } from "../../lib/prismic.js";
-const res = await getDataByType("footer", { lang: Astro.props.lang });
-const [result] = res.results;
+import { getDataByType } from '../../lib/prismic.js'
+const res = await getDataByType('footer', { lang: Astro.props.lang })
+const [result] = res.results
 
-const footer = result.data;
+const footer = result.data
 ---
 
 <footer class="break-container">
