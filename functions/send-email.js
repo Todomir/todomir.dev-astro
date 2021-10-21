@@ -1,5 +1,5 @@
-import nodemailer from 'nodemailer'
-import axios from 'redaxios'
+const nodemailer = require('nodemailer')
+const axios = require('redaxios')
 
 const { TRANSPORTER_EMAIL, TRANSPORTER_PASSWORD, RECAPTCHA_SECRET } = process.env
 
