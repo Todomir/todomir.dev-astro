@@ -1,4 +1,6 @@
 const nodemailer = require('nodemailer')
+const fetch = require('node-fetch')
+
 const { TRANSPORTER_EMAIL, TRANSPORTER_PASSWORD, RECAPTCHA_SECRET } = process.env
 
 exports.handler = async function sendEmail(evt, ctx, callback) {
