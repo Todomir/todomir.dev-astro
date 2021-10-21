@@ -1,7 +1,6 @@
 require('isomorphic-fetch')
 
 const nodemailer = require('nodemailer')
-const axios = require('redaxios')
 
 const { TRANSPORTER_EMAIL, TRANSPORTER_PASSWORD, RECAPTCHA_SECRET } = process.env
 
@@ -12,10 +11,13 @@ exports.handler = async function sendEmail(evt, ctx, callback) {
 
 	const body = JSON.parse(evt.body)
 
-	const { data } = await axios.post('https://www.google.com/recaptcha/api/siteverify', {
-		secret: RECAPTCHA_SECRET,
-		response: body.token,
-	})
+  const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `secret=${RECAPTCHA_SECRET}&response=${body.token}`
+  })
+
+  const data = await response.json()
 
 	if (!data.success) {
 		return callback(null, { statusCode: 400, body: JSON.stringify({ message: 'Invalid reCAPTCHA token', ...data }) })
