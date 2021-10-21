@@ -22,8 +22,9 @@
 		try {
 			const response = await axios.post('/.netlify/functions/send-email', data)
 
-			if (response.statusText === 'OK') {
+			if (response.status === 200) {
 				await confetti()
+        formState = 'success'
 			} else {
 				formState = 'error'
 			}
