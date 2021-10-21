@@ -3,7 +3,7 @@
 	export let recaptchaKey
 
 	const handleSubmit = e => {
-    e.preventDefault();
+		e.preventDefault()
 
 		grecaptcha.ready(() => {
 			const formData = new FormData(e.target)
@@ -14,9 +14,7 @@
 				data[key] = value
 			}
 
-			grecaptcha.execute(recaptchaKey, { action: 'submit' }).then(async token => {
-				await onSubmit({ ...data, token })
-			})
+			grecaptcha.execute(recaptchaKey, { action: 'submit' }).then(token => onSubmit({ ...data, token }))
 		})
 	}
 </script>
