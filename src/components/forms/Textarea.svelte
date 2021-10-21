@@ -1,9 +1,9 @@
 <script>
-  export let name = '';
-  export let label = '';
-  export let placeholder = '';
-  export let rows = 12;
-  export let required = false;
+  export let name = ''
+  export let label = ''
+  export let placeholder = ''
+  export let rows = 12
+  export let required = false
 </script>
 
 <div class="input-block">
@@ -11,8 +11,8 @@
     {label}
   </label>
   <div class="input">
-    <slot name="icon"></slot>
-    <textarea required={required} name={name} placeholder={placeholder} rows={rows} />
+    <slot name="icon" />
+    <textarea {required} {name} {placeholder} {rows} />
   </div>
 </div>
 
@@ -43,7 +43,8 @@
       &:focus-within {
         --background-color: var(--color-white);
         --outline-color: var(--color-dark);
-        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 5px var(--outline-color);
+        box-shadow: 0 0 0 2px var(--background-color),
+          0 0 0 5px var(--outline-color);
       }
 
       textarea {

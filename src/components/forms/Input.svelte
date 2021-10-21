@@ -15,14 +15,9 @@
   </label>
   <div class="input">
     {#if icon}
-      <Icon icon={icon} />
+      <Icon {icon} />
     {/if}
-    <input 
-      required={required} 
-      type={type} 
-      name={name} 
-      placeholder={placeholder || ''} 
-    />
+    <input {required} {type} {name} placeholder={placeholder || ''} />
   </div>
 </div>
 
@@ -57,7 +52,8 @@
       &:focus-within {
         --background-color: var(--color-white);
         --outline-color: var(--color-dark);
-        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 5px var(--outline-color);
+        box-shadow: 0 0 0 2px var(--background-color),
+          0 0 0 5px var(--outline-color);
       }
 
       input {
