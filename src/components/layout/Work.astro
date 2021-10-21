@@ -64,6 +64,8 @@ const { slice } = Astro.props
         --size: clamp(80rem, 57.1250rem + 63.5417vw, 110.5rem);
         position: absolute;
 
+        display: none
+
         top: 100%;
         left: 0;
 
@@ -74,6 +76,10 @@ const { slice } = Astro.props
 
         opacity: 0.07;
         z-index: -1;
+
+        @media screen and (min-width: 768px) {
+          display: block;
+        }
       }
 
       @media screen and (min-width: 768px) {
