@@ -1,1 +1,1 @@
-export { confetti } from './confetti';
+export { default as confetti } from './explode-confetti';

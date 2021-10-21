@@ -1,15 +1,15 @@
-import Confetti from 'canvas-confetti'
+import confetti from 'canvas-confetti'
 
 function fire(particleRatio, opts) {
-	Confetti(
+	confetti(
 		Object.assign({}, { origin: { y: 0.7 } }, opts, {
 			particleCount: Math.floor(200 * particleRatio),
 		})
 	)
 }
 
-export async function confetti() {
-	return await new Promise(resolve => {
+export default async function explodeConfetti() {
+	return new Promise(resolve => {
 		setTimeout(() => {
 			formState = 'success'
 			fire(0.25, {
