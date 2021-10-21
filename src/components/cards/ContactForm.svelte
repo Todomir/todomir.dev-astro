@@ -1,6 +1,4 @@
 <script>
-  import axios from 'redaxios'
-
 	import { confetti } from '../../utils'
 
 	import Form from '../forms/Form.svelte'
@@ -20,9 +18,15 @@
 
 	const sendEmail = async data => {
 		try {
-			const response = await axios.post('/.netlify/functions/send-email', data)
+			const response = await fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({...data})
+      })
 
-			if (response.status === 200) {
+			if (response.ok) {
 				await confetti()
         formState = 'success'
 			} else {
