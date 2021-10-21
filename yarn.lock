@@ -584,6 +584,14 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-4.2.0.tgz#667bfc6186ae7c9e0b45a08960c551437176e1ca"
   integrity sha512-VkE3KLBmJwcCaVARtQpfuKcKv8gcBmUubrfHGF84dXuuW6jgsRYxPtzcIhPyK9WAPpRt2/xY6zkD9MnRaJzSyw==
 
+"@snowpack/plugin-dotenv@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@snowpack/plugin-dotenv/-/plugin-dotenv-2.2.0.tgz#624348a83e28ae523a7d2695cbe81f53381bc964"
+  integrity sha512-/gj91mHz9iPi7e393sibVfpm4jrG7hqZytgkfiscOIWJ8Y838D0jX1JFXu9IAThZz0IEKTLpb74d5A7pM00HVg==
+  dependencies:
+    dotenv "^8.2.0"
+    dotenv-expand "^5.1.0"
+
 "@snowpack/plugin-postcss@^1.4.3":
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/@snowpack/plugin-postcss/-/plugin-postcss-1.4.3.tgz#09704923033bd710e50a466bfc0afc90c7cc59df"
@@ -1720,6 +1728,16 @@ domutils@^2.5.2, domutils@^2.6.0, domutils@^2.7.0:
     dom-serializer "^1.0.1"
     domelementtype "^2.2.0"
     domhandler "^4.2.0"
+
+dotenv-expand@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.1.0.tgz#3fbaf020bfd794884072ea26b1e9791d45a629f0"
+  integrity sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==
+
+dotenv@^8.2.0:
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.6.0.tgz#061af664d19f7f4d8fc6e4ff9b584ce237adcb8b"
+  integrity sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==
 
 duplexer@^0.1.2:
   version "0.1.2"
