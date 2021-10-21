@@ -1,5 +1,5 @@
 <script>
-  import {onMount, onDestroy} from 'svelte';
+  import axios from 'redaxios'
 
 	import { confetti } from '../../utils'
 
@@ -20,15 +20,9 @@
 
 	const sendEmail = async data => {
 		try {
-			const response = await fetch('/.netlify/functions/send-email', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(data),
-			})
+			const response = await axios.post('/.netlify/functions/send-email', data)
 
-			if (response.ok) {
+			if (response.statusText === 'OK') {
 				await confetti()
 			} else {
 				formState = 'error'
@@ -49,22 +43,6 @@
 		formState = 'loading'
     await sendEmail(data)
 	}
-
-  // onMount(() => {
-  //   if (import.meta.env.SSR) {
-  //     return null
-  //   } else {
-  //     window.onSubmit = onSubmit
-  //   }
-  // })
-
-  // onDestroy(() => {
-  //   if (import.meta.env.SSR) {
-  //     return null
-  //   } else {
-  //     window.onSubmit = null
-  //   }
-  // })
 </script>
 
 <section id="contact">
