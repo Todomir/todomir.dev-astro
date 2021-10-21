@@ -18,7 +18,7 @@ exports.handler = async function sendEmail(evt, ctx, callback) {
 	})
 
 	if (!data.success) {
-		return callback(null, { statusCode: 400, body: JSON.stringify({ message: 'Invalid reCAPTCHA token' }) })
+		return callback(null, { statusCode: 400, body: JSON.stringify({ message: 'Invalid reCAPTCHA token', ...data }) })
 	}
 
 	const transporter = nodemailer.createTransport({
@@ -51,7 +51,7 @@ exports.handler = async function sendEmail(evt, ctx, callback) {
 
 	try {
 		const info = await transporter.sendMail(mailOptions)
-		callback(null, { statusCode: 200, body: JSON.stringify(info) })
+		callback(null, { statusCode: 200, body: JSON.stringify({info, grecaptcha: data}) })
 	} catch (error) {
 		callback(error)
 	}
