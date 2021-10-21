@@ -2,6 +2,8 @@
 	export let onSubmit
 	export let recaptchaKey
 
+	let formRef
+
 	const handleSubmit = e => {
 		e.preventDefault()
 
@@ -14,12 +16,14 @@
 				data[key] = value
 			}
 
-			grecaptcha.execute(recaptchaKey, { action: 'submit' }).then(token => onSubmit({ ...data, token }))
+			grecaptcha.execute(recaptchaKey, { action: 'submit' })
+        .then(token => onSubmit({ ...data, token })
+        .then(() => formRef.reset()))
 		})
 	}
 </script>
 
-<form on:submit|preventDefault={handleSubmit}>
+<form bind:this={formRef} on:submit|preventDefault={handleSubmit}>
 	<slot />
 </form>
 
