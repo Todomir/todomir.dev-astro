@@ -42,12 +42,13 @@ export async function getStaticPaths() {
 }
 ---
 
+<!DOCTYPE html>
 <BaseLayout
   title={page.page_title}
   description={page.page_description}
   headerCta={page.primary_cta_label}
   permalink="https://todomir.dev"
-  canonicalURL="https://todomir.dev"
+  canonicalURL={Astro.request.canonicalURL.href}
   {lang}>
   <Hero
     content={{ title: page.hero_title, paragraph: page.hero_paragraph, primary_cta: page.primary_cta_label, secondary_cta: page.secondary_cta_label }} />
@@ -60,7 +61,7 @@ export async function getStaticPaths() {
   defer></script>
 
 <style lang="scss">
-  :global(main) {
+  main {
     position: relative;
 
     header {
