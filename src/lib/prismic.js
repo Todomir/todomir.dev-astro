@@ -1,5 +1,6 @@
 import Prismic from '@prismicio/client'
 import PrismicDOM from 'prismic-dom'
+import { formatLang } from '../utils'
 
 const { Elements } = PrismicDOM.RichText
 
@@ -118,6 +119,14 @@ export async function getPageByType(slug, lang) {
   return response
 }
 
+export async function getAllProjects(lang) {
+  const response = await client.query(
+    Prismic.Predicates.at('document.type', 'project'),
+    { lang, orderings: '[my.projects.name desc]' }
+  )
+  return response
+}
+
 export async function getPageByUID(type, slug, options) {
   const response = await client.getByUID(type, slug, options)
   return response
@@ -135,14 +144,5 @@ export async function getDataByType(type, options) {
 export async function getAllFormattedLanguages() {
   const response = await fetch(PRISMIC_API_URL)
   const json = await response.json()
-  return json.languages.map(lang => {
-    const isIdHyphenated = lang.id.includes('-')
-    if (isIdHyphenated) {
-      const splitted = lang.id.split('-')
-      const language = splitted[0] + '-' + splitted[1].toUpperCase()
-      return language
-    } else {
-      return lang.id
-    }
-  })
+  return json.languages.map(lang => formatLang(lang.id))
 }
