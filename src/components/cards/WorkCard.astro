@@ -3,6 +3,10 @@ export interface IProps {
   id: string
   title: string
   variant: 'alpha' | 'beta' | 'kappa'
+  cta: {
+    label: string
+    link: string
+  }
   image: {
     src: string
     alt: string
@@ -16,7 +20,7 @@ const { id, title, variant, image, cta } = Astro.props
   <img class={`img ${variant}`} alt={image.alt} src={image.src} />
   <header class={`header ${variant}`}>
     <h2>{title}</h2>
-    <a href="/" class={`btn ${variant}`}>{cta.label}</a>
+    <a href={cta.link} class={`btn ${variant}`}>{cta.label}</a>
   </header>
 </article>
 
