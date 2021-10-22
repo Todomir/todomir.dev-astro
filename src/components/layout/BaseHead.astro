@@ -77,11 +77,6 @@ const { title, description, permalink, ogImageUrl, canonicalURL } = Astro.props
   property="twitter:image"
   content={ogImageUrl ? `${site.url}${ogImageUrl}` : `${site.url}/assets/img/social.png`} />
 
-<script
-  src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_HTML}`}
-  async
-  defer></script>
-
 <style>
   @font-face {
     font-family: 'Kyiv Type Sans';

@@ -1,11 +1,11 @@
 ---
 // Start of import block -------
-import { getPageByUID, getAllFormattedLanguages } from '../lib/prismic.js'
+import { getPageByUID, getAllFormattedLanguages } from '../../lib/prismic.js'
 
-import BaseLayout from '../components/layout/BaseLayout.astro'
+import BaseLayout from '../../components/layout/BaseLayout.astro'
 
-import Hero from '../components/layout/Hero.astro'
-import Slicezone from '../components/layout/Slicezone.astro'
+import Hero from '../../components/layout/Hero.astro'
+import Slicezone from '../../components/layout/Slicezone.astro'
 
 // End of import block -------
 
@@ -54,8 +54,13 @@ export async function getStaticPaths() {
   <Slicezone slices={page.body} />
 </BaseLayout>
 
+<script
+  src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_HTML}`}
+  async
+  defer></script>
+
 <style lang="scss">
-  main {
+  :global(main) {
     position: relative;
 
     header {
