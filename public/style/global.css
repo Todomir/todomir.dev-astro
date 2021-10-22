@@ -75,10 +75,12 @@ html {
   font-size: 62.5%;
 }
 
-body {
+body, main {
   width: 100%;
   min-height: 100vh;
+}
 
+body {
   padding-inline: var(--body-padding);
 
   background: var(--color-bg);
