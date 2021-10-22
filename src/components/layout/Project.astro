@@ -1,11 +1,103 @@
 ---
 import prismicDom from 'prismic-dom'
 
+import styles from '../styles/Project.module.scss'
+
 import { serializer } from '../../lib/prismic.js'
 const { project } = Astro.props
 ---
 
 <article>
+  <a href="/">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="192"
+      height="192"
+      fill="#000000"
+      viewBox="0 0 256 256"
+      ><rect width="256" height="256" fill="none"></rect><line
+        x1="216"
+        y1="128"
+        x2="40"
+        y2="128"
+        fill="none"
+        stroke="#000000"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="16"></line
+      ><polyline
+        points="112 56 40 128 112 200"
+        fill="none"
+        stroke="#000000"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="16"></polyline
+      ></svg>
+    Retornar à página inicial
+  </a>
   <h1>{prismicDom.RichText.asText(project.name)}</h1>
   <h2>{project.overview}</h2>
+  <img
+    class="break-container"
+    src={project.image.url}
+    alt={project.image.alt} />
+  {project.body.map(item => <section>
+      {prismicDom.RichText.asHtml( item.primary.title, null, (type, _element, _content, children) => serializer( type, _element, _content, children, { h1: styles.articleTitle } ) )}
+      {prismicDom.RichText.asHtml( item.primary.content, null, (type, _element, _content, children) => serializer( type, _element, _content, children, { p: styles.articleParagraph, img: `break-container ${styles.articleImage}` } ) )}
+    </section>)}
 </article>
+
+<style lang="scss">
+  article {
+    --heading-fluid-size: clamp(3.2rem, 2.3203rem + 2.1248vw, 6.4rem);
+    a {
+      display: inline-flex;
+      align-items: center;
+
+      svg {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+
+        transition: all 0.6s ease;
+      }
+
+      text-decoration: none;
+      font-size: 1.4rem;
+      color: var(--color-darker);
+
+      margin-bottom: 24px;
+
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        color: var(--color-dark);
+        text-decoration: revert;
+
+        svg {
+          margin-right: 12px;
+        }
+      }
+    }
+
+    h1 {
+      --font-weight: 1000;
+      --font-contrast: 900;
+    }
+
+    h2 {
+      font-size: var(--body-fluid-size);
+      max-width: 51.9rem;
+    }
+
+    img {
+      margin-block: clamp(13rem, 3.25rem + 27.0833vw, 26rem);
+    }
+
+    section {
+      &:not(:first-of-type) {
+        margin-block-start: clamp(6.4rem, 5.9602rem + 1.0624vw, 8rem);
+      }
+    }
+  }
+</style>

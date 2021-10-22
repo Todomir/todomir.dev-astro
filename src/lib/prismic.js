@@ -68,19 +68,11 @@ export function serializer(type, element, content, children, classes) {
       var linkUrl = element.linkTo
         ? PrismicDOM.Link.url(element.linkTo, module.exports.linkResolver)
         : null
-      var linkTarget =
-        element.linkTo && element.linkTo.target
-          ? `target="${element.linkTo.target}" rel="noopener"`
-          : ''
-      var wrapperClassList = [element.label || '', 'block-img']
-      var img = `<img src="${element.url}" alt="${
-        element.alt || ''
-      }" copyright="${element.copyright || ''}">`
-      return `
-        <p class="${wrapperClassList.join(' ')}">
-          ${linkUrl ? `<a ${linkTarget} href="${linkUrl}">${img}</a>` : img}
-        </p>
-      `
+
+      var img = `<img ${classes.img && `class="${classes.img}"`} src="${
+        element.url
+      }" alt="${element.alt || ''}" copyright="${element.copyright || ''}">`
+      return img
     case Elements.embed:
       return `
         <div data-oembed="${element.oembed.embed_url}"

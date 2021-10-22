@@ -59,7 +59,7 @@
   --color-white: #ffffff;
 
   /* Fluid configuration */
-  --body-padding: clamp(8rem, -4.6179rem + 30.4781vw, 53.9rem);
+  --body-padding: clamp(5.2rem, -7.7753rem + 31.3413vw, 52.4rem);
   --heading-fluid-size: clamp(3.2rem, 2.3203rem + 2.1248vw, 6.4rem);
   --body-fluid-size: clamp(1.6rem, 1.3801rem + 0.5312vw, 2.4rem);
   --button-fluid-size: clamp(1.6rem, 1.545rem + 0.1328vw, 1.8rem);

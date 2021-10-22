@@ -1,0 +1,17 @@
+.articleTitle {
+  --heading-fluid-size: clamp(2.4rem, 1.3004rem + 2.656vw, 6.4rem);
+  --font-weight: 1000;
+  --font-contrast: 800;
+
+  color: var(--color-primary);
+}
+
+.articleParagraph {
+  & + & {
+    margin-top: clamp(3.6rem, 3.2701rem + 0.7968vw, 4.8rem);
+  }
+}
+
+.articleImage {
+  margin-top: 64px;
+}
