@@ -1,0 +1,42 @@
+---
+import prismicDom from 'prismic-dom'
+
+import { formatLang } from '../../../utils'
+import { getAllProjects, getPageByUID } from '../../../lib/prismic.js'
+
+import BaseLayout from '../../../components/layout/BaseLayout.astro'
+import Project from '../../../components/layout/Project.astro'
+
+const { slug, lang } = Astro.request.params
+
+const { data: project } = await getPageByUID('project', slug, { lang })
+
+const permalink = `https://todomir.dev/projects/${slug}`
+
+export async function getStaticPaths() {
+  const { results } = await getAllProjects('*')
+
+  const projects = results.map(project => ({
+    lang: project.lang,
+    slug: project.uid,
+  }))
+
+  return projects.map(project => ({
+    params: {
+      lang: formatLang(project.lang),
+      slug: project.slug,
+    },
+  }))
+}
+---
+
+<!DOCTYPE html>
+<BaseLayout
+  title={`${prismicDom.RichText.asText(project.name)} | todomir.dev`}
+  description={project.overview}
+  {permalink}
+  {lang}
+  canonicalURL={Astro.request.canonicalURL.href}
+  headerCta="Hello">
+  <Project {project} />
+</BaseLayout>

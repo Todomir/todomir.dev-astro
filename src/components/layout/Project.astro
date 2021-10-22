@@ -1,0 +1,11 @@
+---
+import prismicDom from 'prismic-dom'
+
+import { serializer } from '../../lib/prismic.js'
+const { project } = Astro.props
+---
+
+<article>
+  <h1>{prismicDom.RichText.asText(project.name)}</h1>
+  <h2>{project.overview}</h2>
+</article>
