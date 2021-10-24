@@ -12,6 +12,7 @@ const { slug, lang } = Astro.request.params
 const { data: project } = await getPageByUID('project', slug, { lang })
 
 const permalink = `https://todomir.dev/projects/${slug}`
+const cta = lang === 'en-US' ? 'Get in touch' : 'Mande um email'
 
 export async function getStaticPaths() {
   const { results } = await getAllProjects('*')
@@ -37,6 +38,7 @@ export async function getStaticPaths() {
   {permalink}
   {lang}
   canonicalURL={Astro.request.canonicalURL.href}
-  headerCta="Hello">
+  headerCta={cta}
+  headerUrl={`/${lang}#contact`}>
   <Project {project} />
 </BaseLayout>

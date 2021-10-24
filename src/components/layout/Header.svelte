@@ -2,6 +2,7 @@
   import { crossfade, scale } from 'svelte/transition'
 
   export let cta = 'Get in touch'
+  export let url = '#contact'
 
   let y
 
@@ -29,7 +30,7 @@
         />
       </svg>
       {#if isPassThreshold}
-        <a class="btn btn-secondary" in:scale={{ delay: 150, duration: 350 }} out:scale={{duration: 350}} href="#contact">{cta}</a>
+        <a class="btn btn-secondary" in:scale={{ delay: 150, duration: 350 }} out:scale={{duration: 350}} href={url}>{cta}</a>
       {/if}
     </nav>
   </header>
