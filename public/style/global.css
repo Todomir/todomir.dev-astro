@@ -16,11 +16,9 @@
 }
 
 *:focus {
-  --background-color: var(--color-white);
   --outline-color: var(--color-secondary);
-
-  outline: none;
-  box-shadow: 0 0 0 2px var(--background-color), 0 0 0 5px var(--outline-color);
+  outline: 4px solid var(--outline-color);
+  outline-offset: 2px;
 }
 
 :root {
@@ -121,7 +119,7 @@ button,
 
   cursor: pointer;
 
-  will-change: background-color, transform;
+  will-change: background-color, transform, outline;
   transition: all 0.35s ease-in-out;
 
   text-decoration: none;
