@@ -15,3 +15,7 @@
 .articleImage {
   margin-top: 64px;
 }
+
+.articleHeroImage {
+  margin-block: clamp(13rem, 3.25rem + 27.0833vw, 26rem);
+}

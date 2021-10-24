@@ -1,6 +1,8 @@
 ---
 import prismicDom from 'prismic-dom'
 
+import Image from './Image.astro'
+
 import styles from '../styles/Project.module.scss'
 
 import { serializer } from '../../lib/prismic.js'
@@ -37,13 +39,21 @@ const { project } = Astro.props
   </a>
   <h1>{prismicDom.RichText.asText(project.name)}</h1>
   <h2>{project.overview}</h2>
-  <img
-    class="break-container"
+  <Image
+    className={`break-container ${styles.articleHeroImage}`}
     src={project.image.url}
     alt={project.image.alt} />
   {project.body.map(item => <section>
       {prismicDom.RichText.asHtml( item.primary.title, null, (type, _element, _content, children) => serializer( type, _element, _content, children, { h1: styles.articleTitle } ) )}
-      {prismicDom.RichText.asHtml( item.primary.content, null, (type, _element, _content, children) => serializer( type, _element, _content, children, { p: styles.articleParagraph, img: `break-container ${styles.articleImage}` } ) )}
+
+      {item.primary.content.map(item => {
+        switch (item.type) {
+          case 'paragraph':
+            return <p>{item.text}</p>
+          case 'image':
+            return <Image className={`break-container ${styles.articleImage}`} src={item.url} alt={item.alt} />
+        }
+      })}
     </section>)}
 </article>
 
@@ -90,7 +100,7 @@ const { project } = Astro.props
       max-width: 51.9rem;
     }
 
-    img {
+    .articleHeroImage {
       margin-block: clamp(13rem, 3.25rem + 27.0833vw, 26rem);
     }
 
