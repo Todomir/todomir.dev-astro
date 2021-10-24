@@ -1,0 +1,35 @@
+---
+const { src, alt, className } = Astro.props
+---
+
+<picture>
+  <source
+    srcset={`${src}?w=1280&dpr=1 1x,
+                ${src}?w=1280&dpr=2&q=40 2x,
+                ${src}?w=1280&dpr=3&q=30 3x,
+                ${src}?w=1280&dpr=4&q=20 4x,
+                ${src}?w=1280&dpr=5&q=10 5x`}
+    media="(min-width: 1280px)" />
+  <source
+    srcset={`${src}?w=768&h=1024&fit=crop&dpr=11x,
+                ${src}?w=768&h=1024&fit=crop&dpr=2&q=40 2x,
+                ${src}?w=768&h=1024&fit=crop&dpr=3&q=30 3x,
+                ${src}?w=768&h=1024&fit=crop&dpr=4&q=20 4x,
+                ${src}?w=768&h=1024&fit=crop&dpr=5&q=10 5x`}
+    media="(min-width: 768px)" />
+  <source
+    srcset={`${src}?w=568&h=320&fit=crop&dpr=1 1x,
+                ${src}?w=568&h=320&fit=crop&dpr=2&q=40 2x,
+                ${src}?w=568&h=320&fit=crop&dpr=3&q=30 3x,
+                ${src}?w=568&h=320&fit=crop&dpr=4&q=20 4x,
+                ${src}?w=568&h=320&fit=crop&dpr=5&q=10 5x`}
+    media="(min-width: 480px)" />
+  <img
+    {alt}
+    class={className}
+    srcset={`${src}?w=320&h=568&fit=crop&dpr=1 1x,
+                ${src}?w=320&h=568&fit=crop&dpr=2&q=40 2x,
+                ${src}?w=320&h=568&fit=crop&dpr=3&q=30 3x,
+                ${src}?w=320&h=568&fit=crop&dpr=4&q=20 4x,
+                ${src}?w=320&h=568&fit=crop&dpr=5&q=10 5x`} />
+</picture>
