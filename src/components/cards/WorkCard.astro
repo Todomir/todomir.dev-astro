@@ -13,42 +13,26 @@ export interface IProps {
   }
 }
 
+import Image from '../layout/Image.astro'
+import styles from '../styles/Work.module.scss'
+
 const { id, title, variant, image, cta } = Astro.props
 ---
 
 <article>
-  <img class={`img ${variant}`} alt={image.alt} src={image.src} />
+  <Image
+    className={`${styles.img} ${styles[variant]}`}
+    alt={image.alt}
+    src={image.src} />
   <header class={`header ${variant}`}>
     <h2>{title}</h2>
-    <a href={cta.link} class={`btn ${variant}`}>{cta.label}</a>
+    <a href={cta.link} class={`btn ${variant}`} tabindex="0">{cta.label}</a>
   </header>
 </article>
 
 <style lang="scss">
   article {
     position: relative;
-
-    .img {
-      --size: clamp(29rem, 27.5581rem + 7.2093vw, 41.4rem);
-
-      width: 100%;
-      height: var(--size);
-
-      object-fit: cover;
-      object-position: center;
-
-      &.alpha {
-        border-radius: 2rem 2rem 10rem 1rem;
-      }
-
-      &.beta {
-        border-radius: 14.5rem 2rem 14.5rem 2rem;
-      }
-
-      &.kappa {
-        border-radius: 14.5rem 14.5rem 2rem 2rem;
-      }
-    }
 
     .header {
       position: absolute;
