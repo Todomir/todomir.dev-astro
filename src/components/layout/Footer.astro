@@ -26,26 +26,35 @@ const footer = result.data
     <address>
       <h1>{footer.social_media_label}</h1>
       <ul>
-        <li><a href="https://www.instagram.com/">Instagram</a></li>
-        <li><a href="https://www.linkedin.com/in/todomir">Linkedin</a></li>
-        <li><a href="https://www.github.com/Todomir">Github</a></li>
+        <li><a href="https://www.instagram.com/" tabindex="0">Instagram</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/todomir" tabindex="0"
+            >Linkedin</a>
+        </li>
+        <li>
+          <a href="https://www.github.com/Todomir" tabindex="0">Github</a>
+        </li>
       </ul>
     </address>
     <address>
       <h1>{footer.contact_label}</h1>
       <ul>
         <li>
-          <a href="https://api.whatsapp.com/send?phone=5571991901363"
-            >Whatsapp</a>
+          <a
+            href="https://api.whatsapp.com/send?phone=5571991901363"
+            tabindex="0">Whatsapp</a>
         </li>
-        <li><a href="https://t.me/todomilho">Telegram</a></li>
-        <li><a href={`mailto:${process.env.TRANSPORTER_EMAIL}`}>E-mail</a></li>
+        <li><a href="https://t.me/todomilho" tabindex="0">Telegram</a></li>
+        <li>
+          <a href={`mailto:${process.env.TRANSPORTER_EMAIL}`} tabindex="0"
+            >E-mail</a>
+        </li>
       </ul>
     </address>
   </div>
   <div class="bottom">
     <span>{footer.credits}</span>
-    <a href={`${Astro.site}sitemap.xml`}>Sitemap</a>
+    <a href={`${Astro.site}sitemap.xml`} tabindex="0">Sitemap</a>
   </div>
 </footer>
 

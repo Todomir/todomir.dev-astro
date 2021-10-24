@@ -8,7 +8,8 @@ const { slice } = Astro.props
     {prismicDom.RichText.asHtml(slice.title)}
     {prismicDom.RichText.asHtml(slice.paragraph)}
     <footer>
-      <a href="#contact" class="btn btn-dark">{slice.button_label}</a>
+      <a href="#contact" class="btn btn-dark" tabindex="0"
+        >{slice.button_label}</a>
     </footer>
   </article>
 </section>
