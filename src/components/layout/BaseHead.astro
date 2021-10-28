@@ -21,6 +21,11 @@ export interface Props {
 const { title, description, permalink, ogImageUrl, canonicalURL } = Astro.props
 ---
 
+<script
+  src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_HTML}`}
+  async
+  defer></script>
+
 <meta charset="utf-8" />
 <meta
   name="viewport"

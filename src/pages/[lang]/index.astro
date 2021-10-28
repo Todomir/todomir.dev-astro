@@ -55,11 +55,6 @@ export async function getStaticPaths() {
   <Slicezone slices={page.body} />
 </BaseLayout>
 
-<script
-  src={`https://www.google.com/recaptcha/api.js?render=${process.env.RECAPTCHA_HTML}`}
-  async
-  defer></script>
-
 <style lang="scss">
   main {
     position: relative;
