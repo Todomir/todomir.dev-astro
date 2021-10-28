@@ -19,9 +19,8 @@
       grecaptcha
         .execute(recaptchaKey, { action: 'submit' })
         .then(token => onSubmit({ ...data, token }))
+        .then(() => { formRef.reset() })
     })
-
-    formRef.reset()
   }
 </script>
 
