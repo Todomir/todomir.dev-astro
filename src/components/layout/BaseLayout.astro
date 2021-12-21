@@ -1,8 +1,4 @@
 ---
-import BaseHead from './BaseHead.astro'
-import Header from './Header.svelte'
-import Footer from './Footer.astro'
-
 export interface IProps {
   title?: string
   description?: string
@@ -12,6 +8,10 @@ export interface IProps {
   headerCta?: string
   headerUrl?: string
 }
+
+import BaseHead from './BaseHead.astro'
+import Header from './Header.svelte'
+import Footer from './Footer.astro'
 
 const {
   title,

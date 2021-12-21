@@ -1,11 +1,10 @@
 ---
 import prismicDom from 'prismic-dom'
 import { serializer } from '../../lib/prismic.js'
+import styles from '../styles/Hero.module.scss'
 const { content } = Astro.props
 
 const { Elements } = prismicDom.RichText
-
-import styles from '../styles/Hero.module.scss'
 
 const header = prismicDom.RichText.asHtml(
   content.title,
@@ -39,9 +38,11 @@ const paragraph = prismicDom.RichText.asHtml(
   {paragraph}
   <footer>
     <a class="btn btn-primary" href="#contact" tabindex="0"
-      >{content.primary_cta}</a>
+      >{content.primary_cta}</a
+    >
     <a class="btn btn-secondary" href="#work" tabindex="0"
-      >{content.secondary_cta}</a>
+      >{content.secondary_cta}</a
+    >
   </footer>
 </section>
 

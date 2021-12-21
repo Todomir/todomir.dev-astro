@@ -1,4 +1,12 @@
 ---
+export interface Props {
+  title?: string
+  description?: string
+  permalink?: string
+  ogImageUrl?: string
+  canonicalURL?: string
+}
+
 const site = {
   title: 'Abner Rodrigues | todomir.dev',
   description:
@@ -8,14 +16,6 @@ const site = {
   facebookURL: 'https://facebook.com',
   twitterURL: 'https://twitter.com/todomir__',
   instagramURL: 'https://instagram.com/todomir',
-}
-
-export interface Props {
-  title?: string
-  description?: string
-  permalink?: string
-  ogImageUrl?: string
-  canonicalURL?: string
 }
 
 const { title, description, permalink, ogImageUrl, canonicalURL } = Astro.props
@@ -29,23 +29,16 @@ const { title, description, permalink, ogImageUrl, canonicalURL } = Astro.props
 <meta charset="utf-8" />
 <meta
   name="viewport"
-  content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  content="width=device-width, initial-scale=1, viewport-fit=cover"
+/>
 
 <!-- Favicon configuration -->
-<link
-  rel="apple-touch-icon"
-  sizes="114x114"
-  href="/assets/apple-touch-icon.png" />
-<link
-  rel="icon"
-  type="image/png"
-  sizes="32x32"
-  href="/assets/favicon-32x32.png" />
-<link
-  rel="icon"
-  type="image/png"
-  sizes="16x16"
-  href="/assets/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-touch-icon.png"
+/>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"
+/>
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"
+/>
 <link rel="manifest" href="/assets/site.webmanifest" />
 <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5" />
 <meta name="msapplication-TileColor" content="#ffc40d" />
@@ -69,18 +62,23 @@ const { title, description, permalink, ogImageUrl, canonicalURL } = Astro.props
 <meta property="og:description" content={description || site.description} />
 <meta
   property="og:image"
-  content={ogImageUrl ? `${site.url}${ogImageUrl}` : `${site.url}/assets/img/social.png`} />
+  content={ogImageUrl
+    ? `${site.url}${ogImageUrl}`
+    : `${site.url}/assets/img/social.png`}
+/>
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={permalink || site.url} />
 <meta property="twitter:title" content={title || site.title} />
-<meta
-  property="twitter:description"
-  content={description || site.description} />
+<meta property="twitter:description" content={description || site.description}
+/>
 <meta
   property="twitter:image"
-  content={ogImageUrl ? `${site.url}${ogImageUrl}` : `${site.url}/assets/img/social.png`} />
+  content={ogImageUrl
+    ? `${site.url}${ogImageUrl}`
+    : `${site.url}/assets/img/social.png`}
+/>
 
 <style>
   @font-face {
