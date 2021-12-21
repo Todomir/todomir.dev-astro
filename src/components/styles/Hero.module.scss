@@ -25,7 +25,7 @@
 
 .paragraph {
   max-width: 71.9rem;
-  margin-block-end: clamp(3.6rem, 2.8303rem + 1.8592vw, 6.4rem);
+  margin-bottom: clamp(3.6rem, 2.8303rem + 1.8592vw, 6.4rem);
 
   strong {
     color: var(--color-primary);

@@ -21,7 +21,7 @@ const { slice } = Astro.props
 
     --subheading-padding: clamp(12rem, 4.3028rem + 18.5923vw, 40rem);
 
-    padding-block: var(--subheading-padding);
+    padding: var(--subheading-padding) 0;
 
     &:before {
       content: '';
@@ -47,11 +47,11 @@ const { slice } = Astro.props
       justify-content: center;
 
       h1 {
-        margin-block-end: clamp(2.4rem, 1.8502rem + 1.328vw, 4.4rem);
+        margin-bottom: clamp(2.4rem, 1.8502rem + 1.328vw, 4.4rem);
       }
 
       footer {
-        margin-block-start: clamp(3.6rem, 2.8303rem + 1.8592vw, 6.4rem);
+        margin-top: clamp(3.6rem, 2.8303rem + 1.8592vw, 6.4rem);
 
         display: flex;
         flex-direction: column;

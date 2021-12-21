@@ -37,10 +37,11 @@ const { slice } = Astro.props
     width: calc(100% + (var(--body-padding) * 2));
     margin-left: calc(var(--body-padding) * -1);
 
-    padding-inline: clamp(2.1rem, 0.1986rem + 9.5070vw, 7.5rem);
-
+    padding: 0 clamp(2.1rem, 0.1986rem + 9.5070vw, 7.5rem);
+    padding-bottom: 120px;
     @media screen and (min-width: 768px) {
-      padding-inline: clamp(7.5rem, -22.6333rem + 39.2361vw, 52.7rem);
+      padding: 0 clamp(7.5rem, -22.6333rem + 39.2361vw, 52.7rem);
+      padding-bottom: 120px;
     }
     
 
@@ -60,7 +61,7 @@ const { slice } = Astro.props
       position: relative;
 
       max-width: 88.6rem;
-      margin-inline: auto;
+      margin: 0 auto;
 
       .triangle {
         --size: clamp(80rem, 57.1250rem + 63.5417vw, 110.5rem);

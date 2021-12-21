@@ -79,7 +79,7 @@ body, main {
 }
 
 body {
-  padding-inline: var(--body-padding);
+  padding: 0 var(--body-padding);
 
   background: var(--color-bg);
   color: var(--color-darker);
@@ -91,7 +91,7 @@ body {
 }
 
 main {
-  padding-block: clamp(13.2rem, 10.6709rem + 6.1089vw, 22.4rem);
+  padding: clamp(13.2rem, 10.6709rem + 6.1089vw, 22.4rem) 0;
 }
 
 p {
@@ -111,8 +111,7 @@ button,
   font-family: var(--font-family);
   font-size: var(--button-fluid-size);
 
-  padding-inline: 1.6em;
-  padding-block: 0.8em;
+  padding: 0.8em 1.6em;
 
   border-radius: 0.5em;
   border: none;
@@ -184,7 +183,7 @@ h1 {
   line-height: normal;
 
   letter-spacing: -0.06em;
-  margin-block-end: clamp(2.4rem, 1.8502rem + 1.328vw, 4.4rem);
+  margin-bottom: clamp(2.4rem, 1.8502rem + 1.328vw, 4.4rem);
 }
 
 h1,
@@ -207,5 +206,6 @@ strong {
 
 .break-container {
   width: calc(100% + (var(--body-padding) * 2));
-  margin-inline: calc(-1 * var(--body-padding));
+  margin-left: calc(-1 * var(--body-padding));
+  margin-right: calc(-1 * var(--body-padding));
 }

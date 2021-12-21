@@ -158,8 +158,7 @@
     background-color: var(--color-white);
     border-radius: 30px;
 
-    padding-block: 64px;
-    padding-inline: var(--padding-inline);
+    padding: 64px var(--padding-inline);
 
     max-width: 95.3rem;
     margin: 0 auto;
@@ -167,7 +166,8 @@
     @media screen and (max-width: 768px) {
       width: calc(100% + (var(--body-padding) * 2));
       margin-left: calc(-1 * var(--body-padding));
-      padding-block: 100px;
+      padding-top: 100px;
+      padding-bottom: 100px;
     }
 
     button {
